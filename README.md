@@ -3,7 +3,7 @@
 ## Equipo de desarrollo
 
 - Alguien
-- Persona
+- Sosa Sofia Beatriz
 - Martinez Jarse Zaida Solange
 - Villegas Avalos Carlos Alejandro
 - Viegas Lara Maiten
