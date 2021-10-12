@@ -2,7 +2,7 @@
 
 ## Equipo de desarrollo
 
-- Alguien
+- Bovarines Natalia Gabriela
 - Sosa Sofia Beatriz
 - Martinez Jarse Zaida Solange
 - Villegas Avalos Carlos Alejandro
@@ -14,7 +14,7 @@
 
 ## Reglas de Juego / Instrucciones
 
-(Escribirlas)
+Al inicio del juego se podrá elegir con qué guerrero jugar. Cada guerrero tendrá diferente forma de atacar y podrá avanzar de nivel enfrentando a diferentes enemigos con formas particulares de atacar.
 
 
 ## Otros
