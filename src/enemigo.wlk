@@ -8,9 +8,11 @@ class Enemigo {
 	var cantidadDesaparecidas = 0
 	
 	method coliciona(alguien){
+		
 		game.removeVisual(self)
 		cantidadDesaparecidas++
 		alguien.aumentaPoder(cantidadDesaparecidas)
+		
 		if(cantidadDesaparecidas < 3){
 			game.addVisual(self)
 		}
@@ -19,6 +21,7 @@ class Enemigo {
 
 
 object boss inherits Enemigo {
+	
 	const power = 10000
 	const posicion = game.at(25,11)
 	var nro = 0
@@ -46,7 +49,9 @@ object boss inherits Enemigo {
 }
 
 object enanoHechicero inherits Enemigo {
+	
 	var posicion = game.at(1,15)
+	
 	method position() {
 		return posicion
 	}
@@ -67,6 +72,7 @@ object enanoHechicero inherits Enemigo {
 }
 
 object ladronZombie inherits Enemigo {
+	
 	var posicion = game.at(28,3)
 	
 	method position() {
@@ -86,8 +92,10 @@ object ladronZombie inherits Enemigo {
 }
 
 object basilisco inherits Enemigo {
+	
 	var posicion = game.center()//at(19,9)
 	var moverseALaIzquierda = true
+	
 	method position() {
 		return posicion
 	}
@@ -125,7 +133,9 @@ object basilisco inherits Enemigo {
 }
 
 object esqueleto inherits Enemigo {
+	
 	const posicion = game.at(13,4)
+	
 	method position() {
 		
 		return posicion
@@ -140,11 +150,13 @@ object esqueleto inherits Enemigo {
 
 
 object victory {
+	
 	method position() = game.at(11,5)
 	method image() = "you-win.png"
 }
 
 object lose {
+	
 	method position() = game.at(9,3)
 	method image() = "game_over.png"
 }
