@@ -1,6 +1,6 @@
 import wollok.game.*
-import warrior.*
-import enemy.*
+import guerrero.*
+import enemigo.*
 
 object pantalla {
 	

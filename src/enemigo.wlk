@@ -1,9 +1,9 @@
 import wollok.game.*
-import warrior.*
+import guerrero.*
 import pantalla.*
 
 
-class Enemys {
+class Enemigo {
 	
 	var cantidadDesaparecidas = 0
 	
@@ -18,7 +18,7 @@ class Enemys {
 }
 
 
-object boss inherits Enemys {
+object boss inherits Enemigo {
 	const power = 10000
 	const posicion = game.at(25,11)
 	var nro = 0
@@ -45,7 +45,7 @@ object boss inherits Enemys {
 	
 }
 
-object enanoHechicero inherits Enemys {
+object enanoHechicero inherits Enemigo {
 	var posicion = game.at(1,15)
 	method position() {
 		return posicion
@@ -66,7 +66,7 @@ object enanoHechicero inherits Enemys {
 	
 }
 
-object ladronZombie inherits Enemys {
+object ladronZombie inherits Enemigo {
 	var posicion = game.at(28,3)
 	
 	method position() {
@@ -85,7 +85,7 @@ object ladronZombie inherits Enemys {
 	
 }
 
-object basilisco inherits Enemys {
+object basilisco inherits Enemigo {
 	var posicion = game.center()//at(19,9)
 	var moverseALaIzquierda = true
 	method position() {
@@ -124,7 +124,7 @@ object basilisco inherits Enemys {
 	}
 }
 
-object esqueleto inherits Enemys {
+object esqueleto inherits Enemigo {
 	const posicion = game.at(13,4)
 	method position() {
 		
