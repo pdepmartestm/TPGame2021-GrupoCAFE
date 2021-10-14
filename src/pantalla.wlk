@@ -13,7 +13,7 @@ object pantalla {
 		self.agregarPesonajesJuego()
 		self.desplazamiento()
 		
-		game.onCollideDo(guerrero,{algo => 
+		game.onCollideDo(guerrero, {algo => 
 			algo.coliciona(guerrero)
 			game.say(guerrero, "¡Uno Menos!")
 			if(guerrero.poder() <= 10000){
