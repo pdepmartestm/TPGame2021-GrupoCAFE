@@ -2,7 +2,7 @@
 
 ## Equipo de desarrollo
 
-- Alguien
+- Bovarines Natalia Gabriela
 - Sosa Sofia Beatriz
 - Martinez Jarse Zaida Solange
 - Villegas Avalos Carlos Alejandro
