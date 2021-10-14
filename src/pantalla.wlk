@@ -13,10 +13,10 @@ object pantalla {
 		self.agregarPesonajesJuego()
 		self.desplazamiento()
 		
-		game.onCollideDo(warrior,{algo => 
-			algo.coliciona(warrior)
-			game.say(warrior, "¡Uno Menos!")
-			if(warrior.miPoder() <= 10000){
+		game.onCollideDo(guerrero,{algo => 
+			algo.coliciona(guerrero)
+			game.say(guerrero, "¡Uno Menos!")
+			if(guerrero.poder() <= 10000){
 				game.say(boss, "¡Humano, eres debil!")
 			}else{
 				game.say(boss, "¡Al fin, un digno oponente!")
@@ -47,10 +47,10 @@ object pantalla {
 	}
 	
 	method desplazamiento(){
-		keyboard.left().onPressDo({warrior.moverALaIzquierda()})
-		keyboard.right().onPressDo({warrior.moverALaDerecha()})
-		keyboard.up().onPressDo({warrior.moverArriba()})
-		keyboard.down().onPressDo({warrior.moverAbajo()})
+		keyboard.left().onPressDo({guerrero.moverALaIzquierda()})
+		keyboard.right().onPressDo({guerrero.moverALaDerecha()})
+		keyboard.up().onPressDo({guerrero.moverArriba()})
+		keyboard.down().onPressDo({guerrero.moverAbajo()})
 		
 		game.onTick(2000, "movimientoLadronZombie", {ladronZombie.moverse()})
 		game.onTick(2000, "movimientoEnanoHechicero", {enanoHechicero.moverse()})
@@ -60,7 +60,7 @@ object pantalla {
 	}
 	
 	method agregarPesonajesJuego(){
-		game.addVisual(warrior)
+		game.addVisual(guerrero)
 		game.addVisual(textoPoderGuerrero)
 		game.addVisual(boss)
 		game.addVisual(enanoHechicero)

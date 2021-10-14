@@ -1,9 +1,9 @@
 import wollok.game.*
 
-object warrior {
+object guerrero {
 	
 	var posicion = game.at(3,5)
-	var poder = 1000
+	var property poder = 1000
 	
 	method position() {
 		return posicion
@@ -32,10 +32,6 @@ object warrior {
 		posicion = posicion.down(1)
 	}
 	
-	method miPoder(){
-		return poder
-	}
-	
 	method aumentaPoder(cantColisiones){
 		poder += 500*cantColisiones
 	}
@@ -43,7 +39,7 @@ object warrior {
 
 object textoPoderGuerrero {
 	method position() = game.origin()
-	method text() = "        Power: " + warrior.miPoder()
+	method text() = "        Power: " + guerrero.poder()
 	method colisiona(){}
 }
 
