@@ -1,6 +1,7 @@
 import wollok.game.*
 import guerrero.*
 import pantalla.*
+import arma.*
 
 
 class Enemigo {
@@ -50,7 +51,7 @@ object boss inherits Enemigo {
 
 object enanoHechicero inherits Enemigo {
 	
-	var posicion = game.at(1,15)
+	var posicion = game.center()//game.at(1,15)
 	
 	method position() {
 		return posicion
@@ -67,6 +68,13 @@ object enanoHechicero inherits Enemigo {
 		
 		if(posicion.y() < 0) posicion = game.at(1,15)
 		
+	}
+	
+	method atacar(){
+		rayoParalizador.position(self.position())
+		game.addVisual(rayoParalizador)
+		rayoParalizador.lado()
+		game.schedule(500, {rayoParalizador.desaparece()})
 	}
 	
 }
