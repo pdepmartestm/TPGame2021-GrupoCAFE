@@ -2,43 +2,78 @@ import wollok.game.*
 import personaje.*
 import arma.*
 import enemigo.*
+import nivel.*
 
 object pantallaPrincipal {
+	
+	var property nivel = primerNivel
+	var property pantalla = nivel.fondo()
+		
+	method siguienteNivel(siguienteNivel){
+		nivel=siguienteNivel
+		if(nivel==null){
+			game.addVisual(pantallaVictoria)
+		}
+	}
 	
 	method iniciar() {
 		self.configurarPantalla()
 		self.agregarPersonajes()
-		self.agregarMovimientoAPersonaje(guerrero)
 		
-		keyboard.a().onPressDo({guerrero.ataca(1) })
-    	keyboard.d().onPressDo({guerrero.ataca(2) })
+		keyboard.x().onPressDo{
+			const colliders = game.colliders(nivel.personajePrincipal())
+			nivel.personajePrincipal().usarArma()
+			//if (colliders.isEmpty()) {
+				
+				//}
+			colliders.forEach{cosa=>
+				if(cosa==nivel.enemigo()){
+					nivel.personajePrincipal().atacar(nivel.enemigo())
+				}
+				
+			}
+		}
     	
-    	game.onTick(3000, "Ataca enano hechicero", {enanoHechicero.atacar()})
-    
+    	game.onTick(3000, "Regenerar energia", {nivel.personajePrincipal().regenerarEnergia()})
+    	
+    	
 		game.start()
 	}
 	
 	method configurarPantalla(){
-		game.height(18) //altura 18
-		game.width(35) //ancho 35
+		game.width(15)
+		game.height(12)
 		game.title("Warrior's Fights")
-		game.boardGround("escenarioArena.png")
+		game.boardGround(pantalla)
 	}
 	
 	method agregarPersonajes(){
-		game.addVisual(guerrero)
-		game.addVisual(enanoHechicero)
+		game.addVisualCharacter(nivel.personajePrincipal())
+		game.addVisual(nivel.enemigo())
+		game.onTick(2000, "movimiento", { nivel.enemigo().moverseRandom() })
 		
 	}
 	
-	method agregarMovimientoAPersonaje(alguien){
-		keyboard.left().onPressDo({alguien.moverseHaciaLaIzquierda()})
-		keyboard.right().onPressDo({alguien.moverseHaciaLaDerecha()})
-		keyboard.up().onPressDo({alguien.moverseHaciaArriba()})
-		keyboard.down().onPressDo({alguien.moverseHaciaAbajo()})
+	method perder(){
+		game.addVisual(pantallaDerrota)
+	}
+	
+	method removerCosas(algo){
+		game.removeVisual(algo)
+	}
+	
+	method emitirMensaje(contenido, quien){
+		game.say(quien, contenido)
 	}
 	
 	
 }
 
+class Pantalla{
+	var property image
+	var property position=game.at(4,4) //ponerlo en el centro
+}
+
+const pantallaVictoria = new Pantalla(image="you-win.png")
+const pantallaDerrota= new Pantalla(image="game_over.png")
 

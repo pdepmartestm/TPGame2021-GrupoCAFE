@@ -4,13 +4,32 @@ import enemigo.*
 
 class Arma{
 	
+	var property image=null
+	var property position=null
+	var property poderLetalidad=null
+	const property energiaRequerida=null
+	
+	method puedeLanzarAtaque(personaje){
+		if(personaje.energia() >= energiaRequerida){
+			self.movimiento()
+			return true
+		}else{
+			return false
+		}
+		
+	}
+	
+	method movimiento(){}
+	
 	method desaparece(){
 		return game.removeVisual(self)	
 	}
 }
 
+const espada = new Arma(image="espada.png", poderLetalidad=5, energiaRequerida=10)
+
+/* 
 object espada inherits Arma {
-	var property position = guerrero.position()
 	var direccion = 1
 	
 	method image(){
@@ -34,7 +53,6 @@ object espada inherits Arma {
 }
 
 object rayoParalizador inherits Arma{
-	var property position = enanoHechicero.position()
 	
 	method image() = "rayo.png"
 	
@@ -44,3 +62,4 @@ object rayoParalizador inherits Arma{
 		
 
 }
+*/
