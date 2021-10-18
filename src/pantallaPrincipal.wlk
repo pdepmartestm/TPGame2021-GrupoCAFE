@@ -28,7 +28,6 @@ object pantallaPrincipal {
 	
 	method iniciar() {
 		self.configurarPantalla()
-		//self.agregarPersonajes()
 		self.iniciarNivel()
 		
 		//Personaje ataca al enemigo con la x
@@ -72,19 +71,6 @@ object pantallaPrincipal {
 		game.boardGround(pantalla)
 	}
 	
-	method agregarPersonajes(){
-		keyboard.left().onPressDo({nivel.personajePrincipal().moverseHaciaLaIzquierda()})
-		keyboard.right().onPressDo({nivel.personajePrincipal().moverseHaciaLaDerecha()})
-		keyboard.up().onPressDo({nivel.personajePrincipal().moverseHaciaArriba()})
-		keyboard.down().onPressDo({nivel.personajePrincipal().moverseHaciaAbajo()})
-		
-		game.addVisual(nivel.personajePrincipal())
-		game.addVisual(nivel.enemigo())
-		nivel.personajePrincipal().posicionarArma()
-		nivel.enemigo().posicionarArma()
-		game.onTick(500, "movimiento ataque enemigo", { nivel.enemigo().arma().movimiento() })
-		
-	}
 	
 	method perder(){
 		game.addVisual(pantallaDerrota)
