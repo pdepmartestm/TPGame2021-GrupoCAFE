@@ -14,7 +14,7 @@
 
 ## Reglas de Juego / Instrucciones
 
-Al inicio del juego se podrá elegir con qué guerrero jugar. Cada guerrero tendrá diferente forma de atacar y podrá avanzar de nivel enfrentando a diferentes enemigos con formas particulares de atacar.
+El juego consiste en varios niveles en los cuales nuestro personaje tiene que vencer a sus enemigos. Cada guerrero que nos toca tiene poderes distintos, como asi tambien los enemigos. En el nivel final, deberemos vencer al dragón.
 
 
 ## Otros
