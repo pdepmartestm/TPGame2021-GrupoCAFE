@@ -18,6 +18,7 @@ object pantallaPrincipal {
 	method victoria(){
 		game.removeTickEvent("Regenerar energia")
 		game.removeTickEvent("Regenerar ataque enemigo")
+		game.removeTickEvent("movimiento ataque enemigo")
 		self.agregarCosas(pantallaVictoria) 
 	}
 		
@@ -30,17 +31,6 @@ object pantallaPrincipal {
 		self.configurarPantalla()
 		self.iniciarNivel()
 		
-		//Personaje ataca al enemigo con la x
-		keyboard.x().onPressDo{
-			const colliders = game.colliders(nivel.personajePrincipal())
-			nivel.personajePrincipal().usarArma()
-			colliders.forEach{cosa=>
-				if(cosa==nivel.enemigo()){
-					nivel.personajePrincipal().atacar(nivel.enemigo())
-				}
-				
-			}
-		}
 		
 		//Arma del enemigo ataca al personaje principal
 		game.onCollideDo(nivel.enemigo().arma(),{personaje=>

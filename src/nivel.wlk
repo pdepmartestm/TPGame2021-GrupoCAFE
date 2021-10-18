@@ -8,8 +8,8 @@ class Nivel {
 	var property personajePrincipal=null
 	var property enemigo = null
 	var property fondo = null
-	var property siguienteNivel=segundoNivel
-	var property esUltimoNivel=false
+	var property siguienteNivel
+	var property esUltimoNivel
 	
 	method terminarNivel(){
 		
@@ -18,10 +18,10 @@ class Nivel {
 		pantallaPrincipal.removerCosas(personajePrincipal)
 		pantallaPrincipal.removerCosas(personajePrincipal.arma())
 		
-		if(self.siguienteNivel().esUltimoNivel()){ //no entra aca, ver
+		if(self.siguienteNivel().esUltimoNivel()){
+			
+			pantallaPrincipal.victoria()
 				
-			pantallaPrincipal.agregarCosas(pantallaVictoria)
-
 		}else{
 			pantallaPrincipal.siguienteNivel(self.siguienteNivel())
 		}
@@ -34,6 +34,18 @@ class Nivel {
 		keyboard.up().onPressDo({self.personajePrincipal().moverseHaciaArriba()})
 		keyboard.down().onPressDo({self.personajePrincipal().moverseHaciaAbajo()})
 		
+		//Personaje ataca al enemigo con la x
+		keyboard.x().onPressDo{
+			const colliders = game.colliders(self.personajePrincipal())
+			self.personajePrincipal().usarArma()
+			colliders.forEach{cosa=>
+				if(cosa==self.enemigo()){
+					self.personajePrincipal().atacar(self.enemigo())
+				}
+				
+			}
+		}
+		
 		pantallaPrincipal.agregarCosas(self.personajePrincipal())
 		pantallaPrincipal.agregarCosas(self.enemigo())
 		self.personajePrincipal().posicionarArma()
@@ -45,6 +57,6 @@ class Nivel {
 
 const primerNivel = new Nivel(personajePrincipal=guerrero, 
 	enemigo=enanoHechicero,
-	fondo="escenarioArena.png", siguienteNivel=segundoNivel)
+	fondo="escenarioArena.png", siguienteNivel=segundoNivel, esUltimoNivel=false, siguienteNivel=segundoNivel)
 	
-const segundoNivel = new Nivel(esUltimoNivel=true)
+const segundoNivel = new Nivel(esUltimoNivel=true, siguienteNivel=null)
