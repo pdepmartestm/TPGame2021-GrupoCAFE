@@ -36,7 +36,8 @@ object pantallaPrincipal {
 		
 	method siguienteNivel(siguienteNivel){
 		nivel=siguienteNivel
-		nivel.iniciarNivel()
+		//nivel.iniciarNivel()
+		self.iniciar()
 	}
 	
 	

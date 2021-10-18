@@ -89,7 +89,7 @@ class Nivel {
 		
 		//Remuevo personajes
 		
-		[enemigo,enemigo.arma(),personajePrincipal,personajePrincipal.arma(), tablaPersonaje, tablaEnemigo].forEach({unObjeto=>pantallaPrincipal.removerCosas(unObjeto)})
+		[enemigo,enemigo.arma(),personajePrincipal,personajePrincipal.arma()].forEach({unObjeto=>pantallaPrincipal.removerCosas(unObjeto)})
 		
 		if(siguienteNivel.esUltimoNivel()){
 			
@@ -98,7 +98,6 @@ class Nivel {
 		}else{
 			
 			pantallaPrincipal.siguienteNivel(siguienteNivel)
-			//pantallaPrincipal.iniciar()
 		}
 		
 	}	
@@ -110,17 +109,19 @@ class Nivel {
 
 object tableroPersonaje {
 	var property position = game.center()//at(1, 15)//[1,15]
-	var property personaje
+	var property personaje = null
 	
 	method text(){
 		
 		return "Personaje vida : " + personaje.vida().toString() + " Personaje energia:" + personaje.energia()
 	}
+	
+	method textColor() = "00FF00FF"
 }
 
 object tableroEnemigo{
 	var property position = game.at(20, 15)//[20,15]
-	var property enemigo
+	var property enemigo = null
 	
 	method text(){
 		
