@@ -30,7 +30,7 @@ object pantallaPrincipal {
 	method victoria(){
 		game.removeTickEvent("Regenerar energia")
 		game.removeTickEvent("Regenerar ataque enemigo")
-		game.removeTickEvent("movimiento ataque enemigo")
+		//game.removeTickEvent("movimiento ataque enemigo")
 		self.agregarCosas(pantallaVictoria) 
 	}
 		

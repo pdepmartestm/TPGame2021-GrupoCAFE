@@ -3,14 +3,15 @@ import pantallaPrincipal.*
 import protagonista.*
 import enemigo.*
 import arma.*
+import personaje.*
 
 class Nivel {
 	
 	var property personajePrincipal=null
 	var property enemigo = null
 	var property fondo = null
-	var property siguienteNivel
-	var property esUltimoNivel
+	var property siguienteNivel = null
+	var property esUltimoNivel = false
 	var property tablaPersonaje = tableroPersonaje
 	var property tablaEnemigo = tableroEnemigo
 	
@@ -23,13 +24,14 @@ class Nivel {
 		
 		
 		//Asigno texto a tableros
-		
-		self.tablaPersonaje().text(self.personajePrincipal())
-		self.tablaEnemigo().text(self.enemigo())
+		tablaPersonaje.personaje(self.personajePrincipal())
+		tablaPersonaje.text()
+		tablaEnemigo.enemigo(self.enemigo())
+		tablaEnemigo.text()
 		
 		//Agrego visuales de tableros
 		
-		[self.tablaPersonaje(),self.tablaEnemigo()].forEach({unObjeto=>pantallaPrincipal.agregarCosas(unObjeto)})
+		[tablaPersonaje,tablaEnemigo].forEach({unObjeto=>pantallaPrincipal.agregarCosas(unObjeto)})
 		
 		//Posiciono armas de personajes
 		
@@ -87,14 +89,16 @@ class Nivel {
 		
 		//Remuevo personajes
 		
-		[enemigo,enemigo.arma(),personajePrincipal,personajePrincipal.arma()].forEach({unObjeto=>pantallaPrincipal.removerCosas(unObjeto)})
+		[enemigo,enemigo.arma(),personajePrincipal,personajePrincipal.arma(), tablaPersonaje, tablaEnemigo].forEach({unObjeto=>pantallaPrincipal.removerCosas(unObjeto)})
 		
-		if(self.siguienteNivel().esUltimoNivel()){
+		if(siguienteNivel.esUltimoNivel()){
 			
 			pantallaPrincipal.victoria()
 				
 		}else{
-			pantallaPrincipal.siguienteNivel(self.siguienteNivel())
+			
+			pantallaPrincipal.siguienteNivel(siguienteNivel)
+			//pantallaPrincipal.iniciar()
 		}
 		
 	}	
@@ -105,20 +109,22 @@ class Nivel {
 }
 
 object tableroPersonaje {
-	var property position = [1,15]
+	var property position = game.center()//at(1, 15)//[1,15]
+	var property personaje
 	
-	method text(personaje){
+	method text(){
 		
 		return "Personaje vida : " + personaje.vida().toString() + " Personaje energia:" + personaje.energia()
 	}
 }
 
 object tableroEnemigo{
-	var property position = [20,15]
+	var property position = game.at(20, 15)//[20,15]
+	var property enemigo
 	
-	method text(personaje){
+	method text(){
 		
-		return "Personaje vida : " + personaje.vida().toString()
+		return "Personaje vida : " + enemigo.vida().toString()
 	}
 }
 
@@ -134,6 +140,7 @@ const primerNivel = new Nivel(
 const segundoNivel = new Nivel(
 	personajePrincipal=angelGuerrero, 
 	enemigo=enanoHechicero,
-	esUltimoNivel=true, 
-	siguienteNivel=null
+	fondo = "orillaLago.jpg",
+	esUltimoNivel=false//, 
+	//siguienteNivel=null
 )

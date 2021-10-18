@@ -36,8 +36,8 @@ class Arma{
 class Espada inherits Arma{
 	override method movimiento(){
 		
-		position = position.left(3)
-		position = position.up(2)
+		//position = position.left(3)
+		//position = position.up(2)
 		
 	}
 }

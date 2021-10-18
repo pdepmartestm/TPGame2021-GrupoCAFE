@@ -81,7 +81,7 @@ class Protagonista inherits Personaje{
 
 
 const guerrero = new Protagonista(image="guerrero2.png", arma=espada)
-const angelGuerrero = new Protagonista(image="angelGuerrero.png", arma=espada)
+const angelGuerrero = new Protagonista(image="guerreroFinal.png", arma=espada)
 /* 
 const arquero = new Protagonista(image="arquero.png", arma=new Arma())
 const sacerdote = new Protagonista(image="sacerdote.png", arma=new Arma())
