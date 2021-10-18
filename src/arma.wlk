@@ -5,7 +5,7 @@ import enemigo.*
 class Arma{
 	
 	var property image=null
-	var property position=null
+	var property position
 	var property poderLetalidad=null
 	const property energiaRequerida=null
 	
@@ -19,14 +19,28 @@ class Arma{
 		
 	}
 	
-	method movimiento(){}
+	method movimiento(){
+		
+		position = position.left(1)
+		
+	}
 	
 	method desaparece(){
 		return game.removeVisual(self)	
 	}
+	
+	method position(x,y){
+		position=game.at(x,y)
+	}
+	
+	method volverPosicionInicial(){
+		position=game.at(30, 8)
+	}
 }
 
-const espada = new Arma(image="espada.png", poderLetalidad=5, energiaRequerida=10)
+const espada = new Arma(image="espada.png", poderLetalidad=5, energiaRequerida=10, position=game.at(5,7))
+const rayo = new Arma(image="rayo.png", poderLetalidad=5, position=game.at(30, 8))
+
 
 /* 
 object espada inherits Arma {
