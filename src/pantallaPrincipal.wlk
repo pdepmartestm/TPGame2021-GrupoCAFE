@@ -10,10 +10,22 @@ object pantallaPrincipal {
 	var property pantalla = nivel.fondo()
 	
 	method iniciarNivel(){
-		if(!nivel.esUltimoNivel()){
-			nivel.iniciarNivel()	
-		}
+		
+			if(!nivel.esUltimoNivel()){
+				nivel.iniciarNivel()	
+			}
 	}
+	
+	method iniciar() {
+		
+			self.configurarPantalla() 
+			 
+			self.iniciarNivel()	    	
+	    	
+			game.start()
+		
+	}
+
 	
 	method victoria(){
 		game.removeTickEvent("Regenerar energia")
@@ -27,32 +39,6 @@ object pantallaPrincipal {
 		nivel.iniciarNivel()
 	}
 	
-	method iniciar() {
-		self.configurarPantalla()
-		self.iniciarNivel()
-		
-		
-		//Arma del enemigo ataca al personaje principal
-		game.onCollideDo(nivel.enemigo().arma(),{personaje=>
-			if(personaje==nivel.personajePrincipal()){
-				nivel.enemigo().atacar(nivel.personajePrincipal())
-		}})
-    	
-    	//Regenerar energia cada 3 segundos, podriamos hacer que la regenere agarrando objetos del mapa
-    	game.onTick(3000, "Regenerar energia", {nivel.personajePrincipal().regenerarEnergia()})
-    	
-    	//Cuando el ataque se va del mapa, generar uno nuevo
-    	game.onTick(1000, "Regenerar ataque enemigo", {
-    		if(nivel.enemigo().arma().position().x()<0){
-    			nivel.enemigo().arma().volverPosicionInicial() 
-    		}
-    	})
-    	
-    	
-		game.onTick(500, "movimiento ataque enemigo", { nivel.enemigo().arma().movimiento() })
-    	
-		game.start()
-	}
 	
 	method configurarPantalla(){
 		game.width(34)
@@ -78,6 +64,7 @@ object pantallaPrincipal {
 	method emitirMensaje(contenido, quien){
 		game.say(quien, contenido)
 	}
+	
 	
 	
 }

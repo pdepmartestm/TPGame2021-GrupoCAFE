@@ -10,23 +10,29 @@ class Personaje{
 	var property arma = null
 	var property mensaje = null
 	
-	method atacar(atacado){
-		atacado.restarVida(arma.poderLetalidad())		
+	
+	method atacar(){
+		self.usarArma()		
 	}
+	
+	method usarArma(){
+
+		arma.movimiento()
 		
+	}
+	
 	method restarVida(cantidad){
-		vida = vida - cantidad
-		game.say(self, self.mensaje() + ' Vida: '+self.vida().toString())
-		if(vida<=0){
-			
-		}
+		vida -= cantidad
+		//game.say(self, self.mensaje() + ' Vida: '+self.vida().toString())
+		
 	}
 	
 	method posicionarArma(){
 		game.addVisual(self.arma())
 	}
-
 	
 	
 }
+
+
 

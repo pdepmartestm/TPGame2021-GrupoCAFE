@@ -1,27 +1,16 @@
 import wollok.game.*
 import personaje.*
 import enemigo.*
+import protagonista.*
 
 class Arma{
 	
 	var property image=null
-	var property position
-	var property poderLetalidad=null
+	var property position=game.at(27, 8)
+	var property poderLetalidad=null 
 	const property energiaRequerida=null
 	
-	method puedeLanzarAtaque(personaje){
-		if(personaje.energia() >= energiaRequerida){
-			self.movimiento()
-			return true
-		}else{
-			return false
-		}
-		
-	}
-	
 	method movimiento(){
-		
-		position = position.left(1)
 		
 	}
 	
@@ -35,11 +24,32 @@ class Arma{
 	
 	method volverPosicionInicial(){
 		position=game.at(30, 8)
+	
+	}
+	
+	//si el arma colisiona resta vida, se usa en oncollidedo de nivel
+	method colisiona(personaje){
+		personaje.restarVida(self.poderLetalidad())
 	}
 }
 
-const espada = new Arma(image="espada.png", poderLetalidad=5, energiaRequerida=10, position=game.at(5,7))
-const rayo = new Arma(image="rayo.png", poderLetalidad=5, position=game.at(30, 8))
+class Espada inherits Arma{
+	override method movimiento(){
+		
+		position = position.left(3)
+		position = position.up(2)
+		
+	}
+}
+
+class Rayo inherits Arma{
+	override method movimiento(){
+		
+		position = position.left(1)
+	}
+}
+const espada = new Espada(image="espada.png", poderLetalidad=5, energiaRequerida=10, position=game.at(5,7))
+const rayo = new Rayo(image="rayo.png", poderLetalidad=5)
 
 
 /* 

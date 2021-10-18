@@ -6,8 +6,8 @@ import pantallaPrincipal.*
 class Enemigo inherits Personaje {
 		
 	override method restarVida(cantidad){
-		vida = vida - cantidad
-		game.say(self, "auch maldito!"+self.vida().toString())
+		vida -= cantidad
+		
 		if(vida <= 0){
 			pantallaPrincipal.nivel().terminarNivel()
 		}

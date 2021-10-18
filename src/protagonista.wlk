@@ -5,40 +5,55 @@ import wollok.game.*
 
 class Protagonista inherits Personaje{
 	
-	var property energia=100000
+	var property energia = 100000
 	
-	override method atacar(atacado){
-		if(arma.puedeLanzarAtaque(self)){
-			atacado.restarVida(arma.poderLetalidad())
-		}
-	}
-	
-	method usarArma(){
-		self.restarEnergia(arma.energiaRequerida())
-		if(!arma.puedeLanzarAtaque(self))
-		pantallaPrincipal.emitirMensaje("No tienes energia suficiente" + self.energia().toString(), self)
+	override method atacar(){
+		
+		if(self.poseeEnergiaRequerida(arma))
+			self.usarArma()
+		
+		else
+			pantallaPrincipal.emitirMensaje("No tienes energia suficiente" + self.energia().toString(), self)
 		
 	}
 	
+	
+	method poseeEnergiaRequerida(arma) = energia >= arma.energiaRequerida()
+	
+	
+	override method usarArma(){
+		
+		self.restarEnergia(arma.energiaRequerida()) //pierde energia		
+		arma.movimiento()
+		//game.schedule(200, {arma.desaparece()})
+	}
+	
 	method restarEnergia(cantidad){
+		
 		if(energia>0)
+		
 		energia = energia - cantidad
 	}
 	
 	method regenerarEnergia(){
+		
 		if(energia<50){
+			
 			energia = energia + 5
 		}
 	}
 	
 	method moverseHaciaLaDerecha(){
+		
 		if(position.x()<limites.ancho()){
+			
 			position = position.right(1)
 			arma.position(position.x()+2,position.y()+2)
 		}
 	}
 	
 	method moverseHaciaLaIzquierda(){
+		
 		if(position.x()>1){
 			position = position.left(1)
 			arma.position(position.x()+2,position.y()+2)
@@ -46,6 +61,7 @@ class Protagonista inherits Personaje{
 	}
 	
 	method moverseHaciaArriba(){
+		
 		if(position.y()<limites.alto()){
 			position = position.up(1)
 			arma.position(position.x()+2,position.y()+2)
@@ -53,6 +69,7 @@ class Protagonista inherits Personaje{
 	}
 	
 	method moverseHaciaAbajo(){
+		
 		if(position.y()>1){
 			position = position.down(1)
 			arma.position(position.x()+2,position.y()+2)
@@ -63,9 +80,8 @@ class Protagonista inherits Personaje{
 }
 
 
-
-const guerrero = new Protagonista(image="guerrero2.png", arma=espada, mensaje="Arghh debo tener mas cuidado")
-
+const guerrero = new Protagonista(image="guerrero2.png", arma=espada)
+const angelGuerrero = new Protagonista(image="angelGuerrero.png", arma=espada)
 /* 
 const arquero = new Protagonista(image="arquero.png", arma=new Arma())
 const sacerdote = new Protagonista(image="sacerdote.png", arma=new Arma())
