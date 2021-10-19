@@ -6,6 +6,7 @@ import wollok.game.*
 class Protagonista inherits Personaje{
 	
 	var property energia = 100000
+	var property esEnemigo=false
 	
 	override method atacar(){
 		
@@ -48,13 +49,13 @@ class Protagonista inherits Personaje{
 		if(position.x()<limites.ancho()){
 			
 			position = position.right(1)
-			arma.position(position.x()+2,position.y()+2)
+			arma.position(position.x(),position.y()+2)
 		}
 	}
 	
 	method moverseHaciaLaIzquierda(){
 		
-		if(position.x()>1){
+		if(position.x()>2){
 			position = position.left(1)
 			arma.position(position.x()+2,position.y()+2)
 		}

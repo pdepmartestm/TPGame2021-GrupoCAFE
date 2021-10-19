@@ -6,9 +6,10 @@ import protagonista.*
 class Arma{
 	
 	var property image=null
-	var property position=game.at(27, 8)
+	var property position=null
 	var property poderLetalidad=null 
 	const property energiaRequerida=null
+	var property esEnemigo=false
 	
 	method movimiento(){
 		
@@ -22,10 +23,6 @@ class Arma{
 		position=game.at(x,y)
 	}
 	
-	method volverPosicionInicial(){
-		position=game.at(30, 8)
-	
-	}
 	
 	//si el arma colisiona resta vida, se usa en oncollidedo de nivel
 	method colisiona(personaje){
@@ -50,7 +47,7 @@ class Rayo inherits Arma{
 }
 const espada = new Espada(image="espada.png", poderLetalidad=5, energiaRequerida=10, position=game.at(5,7))
 const rayo = new Rayo(image="rayo.png", poderLetalidad=5)
-
+const rayo2 = new Rayo(image="rayo.png", poderLetalidad=5)
 
 /* 
 object espada inherits Arma {

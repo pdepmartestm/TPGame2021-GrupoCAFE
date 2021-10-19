@@ -4,6 +4,8 @@ import personaje.*
 import pantallaPrincipal.*
 
 class Enemigo inherits Personaje {
+	
+	var property esEnemigo=true
 		
 	override method restarVida(cantidad){
 		vida -= cantidad
@@ -11,7 +13,11 @@ class Enemigo inherits Personaje {
 		if(vida <= 0){
 			pantallaPrincipal.nivel().terminarNivel()
 		}
+	
+	
 	}
+	
+		
 	/* 
 	method moverseRandom(){
 	//por ahora todos se mueven random, la idea seria
@@ -24,3 +30,4 @@ class Enemigo inherits Personaje {
 }
 
 const enanoHechicero = new Enemigo(image="enanoHechicero.png", arma=rayo, position=game.at(30, 8))
+const enanoHechicero2 = new Enemigo(image="enanoHechicero.png", arma=rayo2, position=game.at(15, 5))

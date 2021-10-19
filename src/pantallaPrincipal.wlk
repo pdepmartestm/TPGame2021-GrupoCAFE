@@ -11,9 +11,8 @@ object pantallaPrincipal {
 	
 	method iniciarNivel(){
 		
-			if(!nivel.esUltimoNivel()){
-				nivel.iniciarNivel()	
-			}
+		nivel.iniciarNivel()	
+			
 	}
 	
 	method iniciar() {
@@ -28,16 +27,13 @@ object pantallaPrincipal {
 
 	
 	method victoria(){
-		game.removeTickEvent("Regenerar energia")
-		game.removeTickEvent("Regenerar ataque enemigo")
-		//game.removeTickEvent("movimiento ataque enemigo")
+		
 		self.agregarCosas(pantallaVictoria) 
 	}
 		
 	method siguienteNivel(siguienteNivel){
 		nivel=siguienteNivel
-		//nivel.iniciarNivel()
-		self.iniciar()
+		siguienteNivel.iniciarNivel()
 	}
 	
 	
