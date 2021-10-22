@@ -46,15 +46,10 @@ class Nivel {
 				
 				const colliders = game.colliders(self.personajePrincipal().arma()) //colliders : objetos que colisionan con el arma del personaje principal
 				
-				self.personajePrincipal().usarArma()
-			//Si el arma del protagonista colisiona con el enemigo
+				self.personajePrincipal().usarArma() //le resta energia por cada vez que presione x
+			
 				colliders.forEach{cosa=>
-											if(cosa.esEnemigo()){
-												pantallaPrincipal.emitirMensaje("Auch maldito",self.enemigo())
-												self.personajePrincipal().arma().colisiona(self.enemigo())						
-											
-											}
-											//game.onTick(500, "Impacto", {self.personajePrincipal().regenerarEnergia()})
+										cosa.recibeAtaqueDePersonaje(self.personajePrincipal().arma())										
 				}
 			}
 			
@@ -66,10 +61,10 @@ class Nivel {
 			//Si el arma del enemigo colisiona con el protagonista
 						
 			game.onCollideDo(self.enemigo().arma(),{personaje=>
-				if(!personaje.esEnemigo()){
-					self.enemigo().arma().colisiona(self.personajePrincipal())
-					pantallaPrincipal.emitirMensaje("Arghh debo tener mas cuidado",self.personajePrincipal())
-			}})
+					personaje.recibeAtaqueEnemigo(self.enemigo().arma())
+					//self.enemigo().arma().colisiona(self.personajePrincipal())
+
+			})
 			
 	    	//Cuando el ataque se va del mapa, generar uno nuevo
 	    	game.onTick(1000, "Regenerar ataque enemigo", {

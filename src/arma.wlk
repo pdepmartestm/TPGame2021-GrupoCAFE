@@ -9,12 +9,15 @@ class Arma{
 	var property position=null
 	var property poderLetalidad=null 
 	const property energiaRequerida=null
-	var property esEnemigo=false
+
 	
 	method movimiento(){
 		
 	}
 	
+	method recibeAtaqueDePersonaje(armaPersonaje){}
+	method recibeAtaqueEnemigo(armaEnemigo){
+	}
 	method desaparece(){
 		return game.removeVisual(self)	
 	}
@@ -45,7 +48,9 @@ class Rayo inherits Arma{
 		position = position.left(1)
 	}
 }
-const espada = new Espada(image="espada.png", poderLetalidad=5, energiaRequerida=10, position=game.at(5,7))
+const espada = new Espada(image="espada.png", poderLetalidad=5, energiaRequerida=10)
+const espada2 = new Espada(image="espada.png", poderLetalidad=5, energiaRequerida=10)
+
 const rayo = new Rayo(image="rayo.png", poderLetalidad=5)
 const rayo2 = new Rayo(image="rayo.png", poderLetalidad=5)
 

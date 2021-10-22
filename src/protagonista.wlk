@@ -6,7 +6,7 @@ import wollok.game.*
 class Protagonista inherits Personaje{
 	
 	var property energia = 100000
-	var property esEnemigo=false
+	
 	
 	override method atacar(){
 		
@@ -49,7 +49,7 @@ class Protagonista inherits Personaje{
 		if(position.x()<limites.ancho()){
 			
 			position = position.right(1)
-			arma.position(position.x(),position.y()+2)
+			arma.position(self.arma().position().x()+1,self.arma().position().y())
 		}
 	}
 	
@@ -57,7 +57,7 @@ class Protagonista inherits Personaje{
 		
 		if(position.x()>2){
 			position = position.left(1)
-			arma.position(position.x()+2,position.y()+2)
+			arma.position(self.arma().position().x()-1,self.arma().position().y())
 		}
 	}
 	
@@ -65,7 +65,7 @@ class Protagonista inherits Personaje{
 		
 		if(position.y()<limites.alto()){
 			position = position.up(1)
-			arma.position(position.x()+2,position.y()+2)
+			arma.position(self.arma().position().x(),self.arma().position().y()+1)
 		}
 	}
 	
@@ -73,7 +73,7 @@ class Protagonista inherits Personaje{
 		
 		if(position.y()>1){
 			position = position.down(1)
-			arma.position(position.x()+2,position.y()+2)
+			arma.position(self.arma().position().x(),self.arma().position().y()-1)
 		}
 	}
 	
@@ -81,8 +81,8 @@ class Protagonista inherits Personaje{
 }
 
 
-const guerrero = new Protagonista(image="guerrero2.png", arma=espada)
-const angelGuerrero = new Protagonista(image="guerreroFinal.png", arma=espada)
+const guerrero = new Protagonista(image="guerrero1.png", arma=espada)
+const angelGuerrero = new Protagonista(image="guerreroFinal.png", arma=espada2)
 /* 
 const arquero = new Protagonista(image="arquero.png", arma=new Arma())
 const sacerdote = new Protagonista(image="sacerdote.png", arma=new Arma())

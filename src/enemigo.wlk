@@ -5,7 +5,9 @@ import pantallaPrincipal.*
 
 class Enemigo inherits Personaje {
 	
-	var property esEnemigo=true
+	override method recibeAtaqueEnemigo(arma){
+		
+	}
 		
 	override method restarVida(cantidad){
 		vida -= cantidad
@@ -15,6 +17,16 @@ class Enemigo inherits Personaje {
 		}
 	
 	
+	}
+	
+	method recibeAtaqueDePersonaje(armaPersonaje){
+		self.restarVida(armaPersonaje.poderLetalidad())
+		pantallaPrincipal.emitirMensaje("Auch maldito, me voy a vengar!", self)
+	}
+	
+	override method posicionarArma(){
+		self.arma().position(position.x(), position.y())
+		game.addVisual(self.arma())
 	}
 	
 		
@@ -29,5 +41,5 @@ class Enemigo inherits Personaje {
 */
 }
 
-const enanoHechicero = new Enemigo(image="enanoHechicero.png", arma=rayo, position=game.at(30, 8))
-const enanoHechicero2 = new Enemigo(image="enanoHechicero.png", arma=rayo2, position=game.at(15, 5))
+const enanoHechicero = new Enemigo(image="enanoHechicero.png", arma=rayo, position=game.at(25, 8))
+const enanoHechicero2 = new Enemigo(image="enanoHechicero.png", arma=rayo2, position=game.at(20, 5))

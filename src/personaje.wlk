@@ -27,8 +27,13 @@ class Personaje{
 		
 	}
 	
+	method recibeAtaqueEnemigo(armaEnemigo){
+		self.restarVida(armaEnemigo.poderLetalidad())
+		pantallaPrincipal.emitirMensaje("Arghh debo tener mas cuidado",self)
+	}
+	
 	method posicionarArma(){
-		self.arma().position(self.position()) //que la posicion inicial de las armas sea la misma que el duenio
+		self.arma().position(position.x()+2, position.y()+1) //que la posicion inicial de las armas sea la misma que el duenio
 		game.addVisual(self.arma())
 	}
 	

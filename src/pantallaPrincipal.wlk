@@ -38,8 +38,8 @@ object pantallaPrincipal {
 	
 	
 	method configurarPantalla(){
-		game.width(34)
-		game.height(18)
+		game.width(27)
+		game.height(15)
 		game.title("Warrior's Fights")
 		game.ground(pantalla)
 	}
