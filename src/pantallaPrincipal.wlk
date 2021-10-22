@@ -7,7 +7,7 @@ import nivel.*
 object pantallaPrincipal {
 	
 	var property nivel = primerNivel
-	var property pantalla = nivel.fondo()
+	var property pantalla = "muro.png"
 	
 	method iniciarNivel(){
 		
@@ -41,7 +41,7 @@ object pantallaPrincipal {
 		game.width(34)
 		game.height(18)
 		game.title("Warrior's Fights")
-		game.boardGround(pantalla)
+		game.ground(pantalla)
 	}
 	
 	
@@ -68,8 +68,8 @@ object pantallaPrincipal {
 
 object limites{
 	
-	var property alto=game.height()
-	var property ancho=game.width()
+	var property alto=game.height() - 6
+	var property ancho=game.width() - 2
 
 }
 

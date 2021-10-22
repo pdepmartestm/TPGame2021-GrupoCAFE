@@ -5,6 +5,7 @@ import enemigo.*
 import arma.*
 import personaje.*
 
+
 class Nivel {
 	
 	var property personajePrincipal
@@ -17,8 +18,8 @@ class Nivel {
 	
 	
 	method iniciarNivel(){
-		
-
+		//Agrego fondo de pantalla del nivel
+		pantallaPrincipal.agregarCosas(self.fondo())
 		
 		//Agrego visuales de personajes
 		
@@ -131,11 +132,23 @@ object tableroEnemigo{
 	method textColor() = "FF0000FF"
 }
 
+object fondoNivelUno {
+	var property image = "escenarioArena.png"
+	var property position = game.origin()
+}
+
+object fondoNivelDos {
+	var property image = "orillaLago.jpg"
+	var property position = game.origin()
+}
+
+
 
 const primerNivel = new Nivel(
 	personajePrincipal=guerrero, 
 	enemigo=enanoHechicero,
-	fondo="escenarioArena.png", 
+	fondo = fondoNivelUno,
+	//fondo="escenarioArena.png", 
 	siguienteNivel=segundoNivel, 
 	esUltimoNivel=false
 )
@@ -143,7 +156,8 @@ const primerNivel = new Nivel(
 const segundoNivel = new Nivel(
 	personajePrincipal=angelGuerrero, 
 	enemigo=enanoHechicero2,
-	fondo = "orillaLago.jpg",
+	fondo = fondoNivelDos,
+	//fondo = "orillaLago.jpg",
 	esUltimoNivel=true, 
 	siguienteNivel=null
 )
