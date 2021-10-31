@@ -2,34 +2,23 @@ import wollok.game.*
 import arma.*
 import personaje.*
 import pantallaPrincipal.*
+import areaImagen.*
 
 class Enemigo inherits Personaje {
 	
-	override method recibeAtaqueEnemigo(arma){
-		
+	var property esEnemigo=true
+	
+	override method mensaje() = "Auch maldito, me voy a vengar!"	
+
+	override method posicionarArma() {
+		self.arma().position(self.position().x() -2, self.position().y())
 	}
-		
-	override method restarVida(cantidad){
-		vida -= cantidad
-		
-		if(vida <= 0){
-			pantallaPrincipal.nivel().terminarNivel()
-		}
-	
-	
+	override method agregarArma(){
+		self.posicionarArma()
+		super()
 	}
 	
-	method recibeAtaqueDePersonaje(armaPersonaje){
-		self.restarVida(armaPersonaje.poderLetalidad())
-		pantallaPrincipal.emitirMensaje("Auch maldito, me voy a vengar!", self)
-	}
 	
-	override method posicionarArma(){
-		self.arma().position(position.x(), position.y())
-		game.addVisual(self.arma())
-	}
-	
-		
 	/* 
 	method moverseRandom(){
 	//por ahora todos se mueven random, la idea seria
@@ -41,5 +30,5 @@ class Enemigo inherits Personaje {
 */
 }
 
-const enanoHechicero = new Enemigo(image="enanoHechicero.png", arma=rayo, position=game.at(25, 8))
-const enanoHechicero2 = new Enemigo(image="enanoHechicero.png", arma=rayo2, position=game.at(20, 5))
+const enanoHechicero = new Enemigo(image="enanoHechicero.png", arma=rayo, position=game.at(30, 8), miArea = new AreaImagen(ancho = 2, alto = 3))
+const enanoHechicero2 = new Enemigo(image="enanoHechicero.png", arma=rayo2, position=game.at(15, 5))

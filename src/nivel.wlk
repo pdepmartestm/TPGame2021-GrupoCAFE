@@ -27,7 +27,7 @@ class Nivel {
 
 		//Posiciono armas de personajes
 		
-		[self.personajePrincipal(),self.enemigo()].forEach({unObjeto=>unObjeto.posicionarArma()})
+		[self.personajePrincipal(),self.enemigo()].forEach({unObjeto=>unObjeto.agregarArma()})
 			
 				//Asigno texto a tableros
 		tablaPersonaje.personaje(self.personajePrincipal())
@@ -46,10 +46,16 @@ class Nivel {
 				
 				const colliders = game.colliders(self.personajePrincipal().arma()) //colliders : objetos que colisionan con el arma del personaje principal
 				
-				self.personajePrincipal().usarArma() //le resta energia por cada vez que presione x
-			
+				self.personajePrincipal().usarArma()
+				
+				//Si el arma del protagonista colisiona con el enemigo
 				colliders.forEach{cosa=>
-										cosa.recibeAtaqueDePersonaje(self.personajePrincipal().arma())										
+										cosa.recibeAtaque(self.personajePrincipal())	//.arma()
+											//game.onTick(500, "Impacto", {self.personajePrincipal().regenerarEnergia()})
+				}
+				
+				if(self.enemigo().vida() == 0){
+					self.terminarNivel()
 				}
 			}
 			
@@ -59,17 +65,16 @@ class Nivel {
 			
 			
 			//Si el arma del enemigo colisiona con el protagonista
-						
-			game.onCollideDo(self.enemigo().arma(),{personaje=>
-					personaje.recibeAtaqueEnemigo(self.enemigo().arma())
-					//self.enemigo().arma().colisiona(self.personajePrincipal())
-
+			
+			game.onTick(200, "Colicion arma enemigo contra protagonista", {
+				personajePrincipal.recibeAtaque(enemigo)
 			})
 			
 	    	//Cuando el ataque se va del mapa, generar uno nuevo
+	    	
 	    	game.onTick(1000, "Regenerar ataque enemigo", {
 	    		if(self.enemigo().arma().position().x()<0){
-	    			self.enemigo().arma().position(self.enemigo().position()) 
+	    			self.regenerarAtaqueEnemigo()
 	    		}
 	    	})
 	    	//Regenerar energia cada 3 segundos, podriamos hacer que la regenere agarrando objetos del mapa
@@ -79,6 +84,9 @@ class Nivel {
 		
 	}
 	
+	method regenerarAtaqueEnemigo(){
+		self.enemigo().arma().position(self.enemigo().position()) 
+	}
 	
 	
 	method terminarNivel(){

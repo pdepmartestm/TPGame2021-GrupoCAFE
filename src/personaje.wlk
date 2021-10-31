@@ -1,6 +1,7 @@
 import wollok.game.*
 import arma.*
 import pantallaPrincipal.*
+import areaImagen.*
 
 class Personaje{
 	
@@ -9,6 +10,7 @@ class Personaje{
 	var property position = game.at(3,5)
 	var property arma = null
 	var property mensaje = null
+	var property miArea = null
 
 	
 	method atacar(){
@@ -16,26 +18,27 @@ class Personaje{
 	}
 	
 	method usarArma(){
-
 		arma.movimiento()
-		
 	}
 	
 	method restarVida(cantidad){
 		vida -= cantidad
-		//game.say(self, self.mensaje() + ' Vida: '+self.vida().toString())
+	}
+	
+	method recibeAtaque(enemigo){
+		if(enemigo.arma().estoyDentroDelRango(self)){
+			self.restarVida(enemigo.arma().poderLetalidad())
+			enemigo.posicionarArma()
+			pantallaPrincipal.emitirMensaje(self.mensaje(), self)
+		}
 		
 	}
 	
-	method recibeAtaqueEnemigo(armaEnemigo){
-		self.restarVida(armaEnemigo.poderLetalidad())
-		pantallaPrincipal.emitirMensaje("Arghh debo tener mas cuidado",self)
-	}
-	
-	method posicionarArma(){
-		self.arma().position(position.x()+2, position.y()+1) //que la posicion inicial de las armas sea la misma que el duenio
+	method agregarArma(){
 		game.addVisual(self.arma())
 	}
+	
+	method posicionarArma(){}
 	
 	
 }

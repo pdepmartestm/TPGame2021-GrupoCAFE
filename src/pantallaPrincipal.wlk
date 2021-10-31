@@ -38,8 +38,8 @@ object pantallaPrincipal {
 	
 	
 	method configurarPantalla(){
-		game.width(27)
-		game.height(15)
+		game.width(34)
+		game.height(18)
 		game.title("Warrior's Fights")
 		game.ground(pantalla)
 	}
@@ -75,7 +75,7 @@ object limites{
 
 class Pantalla{
 	var property image
-	var property position=game.at(4,4) //ponerlo en el centro
+	var property position=game.at(8,4) //ponerlo en el centro
 }
 
 const pantallaVictoria = new Pantalla(image="you-win.png")
