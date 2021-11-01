@@ -3,6 +3,7 @@ import personaje.*
 import arma.*
 import wollok.game.*
 import areaImagen.*
+import vidas.*
 
 class Protagonista inherits Personaje{
 	
@@ -63,6 +64,7 @@ class Protagonista inherits Personaje{
 		if(self.position().x()<limites.ancho()){
 			position = self.position().right(1)
 			self.posicionarArma()
+			self.posicionarVida()
 		}
 	}
 	
@@ -71,6 +73,7 @@ class Protagonista inherits Personaje{
 		if(self.position().x()>2){
 			position = self.position().left(1)
 			self.posicionarArma()
+			self.posicionarVida()
 		}
 	}
 	
@@ -79,6 +82,7 @@ class Protagonista inherits Personaje{
 		if(self.position().y()<limites.alto()){
 			position = self.position().up(1)
 			self.posicionarArma()
+			self.posicionarVida()
 		}
 	}
 	
@@ -87,15 +91,20 @@ class Protagonista inherits Personaje{
 		if(self.position().y()>1){
 			position = self.position().down(1)
 			self.posicionarArma()
+			self.posicionarVida()
 		}
 	}
 	
 	
+	override method posicionarVida() {
+		self.barraVida().position(self.position().x()-1, self.position().y()+3)
+	}
+	
 }
 
 
-const guerrero = new Protagonista(image = "guerrero1.png", arma = espada, miArea = new AreaImagen(ancho = 1, alto = 5), posicionArmaX = 2, posicionArmaY = 2)//
-const arquera = new Protagonista(image = "arquera.png", arma = flecha, miArea = new AreaImagen(ancho = 2, alto = 3), posicionArmaX = 1, posicionArmaY = 4)
+const guerrero = new Protagonista(image = "guerrero1.png", arma = espada, miArea = new AreaImagen(ancho = 1, alto = 5), posicionArmaX = 2, posicionArmaY = 2,barraVida=vidaPersonajePrincipal)//
+const arquera = new Protagonista(image = "arquera.png", arma = flecha, miArea = new AreaImagen(ancho = 2, alto = 3), posicionArmaX = 1, posicionArmaY = 4,barraVida=vidaPersonajePrincipal)
 /* 
 const arquero = new Protagonista(image="arquero.png", arma=new Arma())
 const sacerdote = new Protagonista(image="sacerdote.png", arma=new Arma())

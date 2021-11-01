@@ -2,6 +2,7 @@ import wollok.game.*
 import arma.*
 import pantallaPrincipal.*
 import areaImagen.*
+import vidas.*
 
 class Personaje{
 	
@@ -11,7 +12,7 @@ class Personaje{
 	var property arma = null
 	var property mensaje = null
 	var property miArea = null
-
+	var property barraVida = null
 	
 	method atacar(){
 		self.usarArma()		
@@ -23,6 +24,8 @@ class Personaje{
 	
 	method restarVida(cantidad){
 		vida -= cantidad
+		self.barraVida().actualizar(self)
+		
 	}
 	
 	method recibeAtaque(personaje){
@@ -37,7 +40,16 @@ class Personaje{
 		game.addVisual(self.arma())
 	}
 	
+	
+	method agregarVida(){
+		self.posicionarVida()
+		game.addVisual(self.barraVida())
+	}
+	
 	method posicionarArma(){}
+	
+	
+	method posicionarVida() {}
 	
 	
 }

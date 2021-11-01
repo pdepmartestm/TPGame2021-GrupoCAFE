@@ -5,6 +5,7 @@ import enemigo.*
 import arma.*
 import personaje.*
 import fondos.*
+import vidas.*
 
 
 class Nivel {
@@ -30,6 +31,10 @@ class Nivel {
 		//Posiciono armas de personajes
 		
 		[self.enemigo()].forEach({unObjeto=>unObjeto.agregarArma()})
+		
+		//Posiciono vidas de personajes
+		[self.personajePrincipal(),self.enemigo()].forEach({unObjeto=>unObjeto.agregarVida()})
+		
 			
 		//Asigno texto a tableros
 		tablaPersonaje.personaje(self.personajePrincipal())
