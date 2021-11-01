@@ -72,7 +72,7 @@ class Veneno inherits Arma{
 class Flecha inherits Arma{
 	override method movimiento(){
 		
-		position = position.right(1)
+		position = position.right(5)
 	}
 }
 

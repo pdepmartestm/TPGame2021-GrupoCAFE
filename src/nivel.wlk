@@ -28,7 +28,7 @@ class Nivel {
 
 		//Posiciono armas de personajes
 		
-		[self.personajePrincipal(),self.enemigo()].forEach({unObjeto=>unObjeto.agregarArma()})
+		[self.enemigo()].forEach({unObjeto=>unObjeto.agregarArma()})
 			
 		//Asigno texto a tableros
 		tablaPersonaje.personaje(self.personajePrincipal())
@@ -44,22 +44,28 @@ class Nivel {
 		keyboard.down().onPressDo({self.personajePrincipal().moverseHaciaAbajo()})		
 			
 		keyboard.x().onPressDo{	
+			
+			self.personajePrincipal().agregarArma()
 				
-		const colliders = game.colliders(self.personajePrincipal().arma()) //colliders : objetos que colisionan con el arma del personaje principal
+			const colliders = game.colliders(self.personajePrincipal().arma()) //colliders : objetos que colisionan con el arma del personaje principal
 				
-		self.personajePrincipal().usarArma()
+			self.personajePrincipal().usarArma()
 				
-		//Si el arma del protagonista colisiona con el enemigo
+			//Si el arma del protagonista colisiona con el enemigo
 				
-		/*colliders.forEach{cosa =>
+			/*colliders.forEach{cosa =>
 								cosa.recibeAtaque(self.personajePrincipal())	//.arma()
 											//game.onTick(500, "Impacto", {self.personajePrincipal().regenerarEnergia()})
 				}*/
-				enemigo.recibeAtaque(self.personajePrincipal())
-				if(self.enemigo().vida() == 0){
-					self.terminarNivel()
-				}
+			
+			game.schedule(200, {personajePrincipal.arma().desaparece()})	
+			
+			enemigo.recibeAtaque(self.personajePrincipal())
+			
+			if(self.enemigo().vida() == 0){
+				self.terminarNivel()
 			}
+		}
 			
 		//Enemigo ataca
 			
