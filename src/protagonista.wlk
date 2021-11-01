@@ -7,14 +7,14 @@ import areaImagen.*
 class Protagonista inherits Personaje{
 	
 	var property energia = 100000
+	var property posicionArmaX
+	var property posicionArmaY
 	
 	override method mensaje() = "Arghh debo tener mas cuidado"
 	
 	override method atacar(){
 		
-		if(self.poseeEnergiaRequerida(self.arma()))
-			self.usarArma()
-		
+		if(self.poseeEnergiaRequerida(self.arma())) self.usarArma()
 		else
 			pantallaPrincipal.emitirMensaje("No tienes energia suficiente" + self.energia().toString(), self)
 		
@@ -30,6 +30,7 @@ class Protagonista inherits Personaje{
 	}
 	
 	override method recibeAtaque(enemigo){
+		
 		super(enemigo)
 		if(self.vida() == 0){
 			game.clear()
@@ -39,32 +40,27 @@ class Protagonista inherits Personaje{
 	}
 	
 	override method posicionarArma(){
-		self.arma().position(self.position().x() + 2, self.position().y() + 2)
+		const x = self.position().x() + self.posicionArmaX()
+		const y = self.position().y() + self.posicionArmaY()
+		self.arma().position(x, y)
 	}
+	
 	override method agregarArma(){
 		self.posicionarArma()
 		super()
 	}
 	
 	method restarEnergia(cantidad){
-		
-		if(energia > 0)
-		
-		energia = energia - cantidad
+		if(energia > 0) energia = energia - cantidad
 	}
 	
 	method regenerarEnergia(){
-		
-		if(energia<50){
-			
-			energia = energia + 5
-		}
+		if(energia < 50) energia = energia + 5	
 	}
 	
 	method moverseHaciaLaDerecha(){
 		
 		if(self.position().x()<limites.ancho()){
-			
 			position = self.position().right(1)
 			self.posicionarArma()
 		}
@@ -98,8 +94,8 @@ class Protagonista inherits Personaje{
 }
 
 
-const guerrero = new Protagonista(image="guerrero1.png", arma=espada, miArea = new AreaImagen(ancho = 1, alto = 5))//
-const arquera = new Protagonista(image="arquera.png", arma=flecha, miArea = new AreaImagen(ancho = 1, alto = 5))
+const guerrero = new Protagonista(image = "guerrero1.png", arma = espada, miArea = new AreaImagen(ancho = 1, alto = 5), posicionArmaX = 2, posicionArmaY = 2)//
+const arquera = new Protagonista(image = "arquera.png", arma = flecha, miArea = new AreaImagen(ancho = 2, alto = 3), posicionArmaX = 1, posicionArmaY = 4)
 /* 
 const arquero = new Protagonista(image="arquero.png", arma=new Arma())
 const sacerdote = new Protagonista(image="sacerdote.png", arma=new Arma())
