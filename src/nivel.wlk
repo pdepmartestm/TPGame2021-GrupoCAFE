@@ -51,11 +51,11 @@ class Nivel {
 				
 		//Si el arma del protagonista colisiona con el enemigo
 				
-		colliders.forEach{cosa =>
+		/*colliders.forEach{cosa =>
 								cosa.recibeAtaque(self.personajePrincipal())	//.arma()
 											//game.onTick(500, "Impacto", {self.personajePrincipal().regenerarEnergia()})
-				}
-				
+				}*/
+				enemigo.recibeAtaque(self.personajePrincipal())
 				if(self.enemigo().vida() == 0){
 					self.terminarNivel()
 				}

@@ -25,13 +25,12 @@ class Personaje{
 		vida -= cantidad
 	}
 	
-	method recibeAtaque(enemigo){
-		if(enemigo.arma().estoyDentroDelRango(self)){
-			self.restarVida(enemigo.arma().poderLetalidad())
-			enemigo.posicionarArma()
+	method recibeAtaque(personaje){
+		if(personaje.arma().estoyDentroDelRango(self)){
+			self.restarVida(personaje.arma().poderLetalidad())
+			personaje.posicionarArma()
 			pantallaPrincipal.emitirMensaje(self.mensaje(), self)
 		}
-		
 	}
 	
 	method agregarArma(){
