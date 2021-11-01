@@ -57,9 +57,29 @@ class Rayo inherits Arma{
 		position = position.left(1)
 	}
 }
+
+class Veneno inherits Arma{
+	override method movimiento(){
+		const x = (1..limites.ancho()).anyOne()
+    	const y = (1..limites.alto()).anyOne()
+    	
+    	//if(!self.estoyDentroDelRango(basilisco)){
+    		position = game.at(x, y)
+    	//}
+	}
+}
+
+class Flecha inherits Arma{
+	override method movimiento(){
+		
+		position = position.right(1)
+	}
+}
+
 const espada = new Espada(image="espada.png", poderLetalidad=5, energiaRequerida=10, position=game.at(5,7), miArea = new AreaImagen(ancho = 2, alto = 2))
+const flecha = new Flecha(image = "flecha.png", poderLetalidad=5, energiaRequerida=10, position=game.at(5,7), miArea = new AreaImagen(ancho = 4, alto = 1))
 const rayo = new Rayo(image="rayo.png", poderLetalidad=5, miArea = new AreaImagen(ancho = 2, alto = 3))
-const rayo2 = new Rayo(image="rayo.png", poderLetalidad=5)
+const veneno = new Veneno(image="charcoVeneno.png", poderLetalidad=5, miArea = new AreaImagen(ancho = 3, alto = 2))
 
 /* 
 object espada inherits Arma {

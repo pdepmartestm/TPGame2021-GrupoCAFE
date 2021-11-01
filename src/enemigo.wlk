@@ -31,4 +31,5 @@ class Enemigo inherits Personaje {
 }
 
 const enanoHechicero = new Enemigo(image="enanoHechicero.png", arma=rayo, position=game.at(30, 8), miArea = new AreaImagen(ancho = 2, alto = 3))
-const enanoHechicero2 = new Enemigo(image="enanoHechicero.png", arma=rayo2, position=game.at(15, 5))
+const basilisco = new Enemigo(image = "basilisco.png", arma = veneno, position = game.at(15, 5), miArea = new AreaImagen(ancho = 3, alto = 2))
+
