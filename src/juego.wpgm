@@ -3,5 +3,6 @@ import pantallaPrincipal.*
 
 
 program juego {
-	pantallaPrincipal.iniciar()
+	pantallaPrincipal.menuInicial()
+	game.start()
 }

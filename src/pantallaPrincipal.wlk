@@ -3,27 +3,35 @@ import personaje.*
 import arma.*
 import enemigo.*
 import nivel.*
+import fondos.*
 
 object pantallaPrincipal {
 	
 	var property nivel = primerNivel
 	var property pantalla = "muro.png"
 	
+	 method menuInicial() {
+	 	
+		self.configurarPantalla()
+		game.addVisual(menuPantallaInicial)
+		keyboard.enter().onPressDo{self.iniciarJuego()}
+		keyboard.e().onPressDo{game.stop()}
+		
+	}
+	
+	method iniciarJuego() {
+		
+		game.clear()
+		nivel.iniciarNivel()	
+		
+	}
+	/* 
 	method iniciarNivel(){
 		
 		nivel.iniciarNivel()	
 			
-	}
+	}*/
 	
-	method iniciar() {
-		
-			self.configurarPantalla() 
-			 
-			self.iniciarNivel()	    	
-	    	
-			game.start()
-		
-	}
 
 	
 	method victoria(){

@@ -4,6 +4,7 @@ import protagonista.*
 import enemigo.*
 import arma.*
 import personaje.*
+import fondos.*
 
 
 class Nivel {
@@ -142,16 +143,6 @@ object tableroEnemigo{
 	}
 	
 	method textColor() = "FF0000FF"
-}
-
-object fondoNivelUno {
-	var property image = "escenarioArena.png"
-	var property position = game.origin()
-}
-
-object fondoNivelDos {
-	var property image = "orillaLago.jpg"
-	var property position = game.origin()
 }
 
 
