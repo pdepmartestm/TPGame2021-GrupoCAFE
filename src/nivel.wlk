@@ -204,6 +204,15 @@ const tercerNivel = new Nivel(
 	personajePrincipal = sacerdote, 
 	enemigo = esqueleto,
 	fondo = fondoNivelTres,
+	esUltimoNivel = false, 
+	siguienteNivel = cuartoNivel,
+	tiempoAtaqueEnemigo = 3000
+)
+
+const cuartoNivel = new Nivel(
+	personajePrincipal = angel, 
+	enemigo = dragon,
+	fondo = fondoNivelCuatro,
 	esUltimoNivel = true, 
 	siguienteNivel = null,
 	tiempoAtaqueEnemigo = 3000
