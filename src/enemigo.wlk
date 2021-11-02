@@ -27,17 +27,9 @@ class Enemigo inherits Personaje {
 }
 
 class Esqueleto inherits Enemigo {
-	/* 
+	
 	override method moverse() {
-		const x = 15.randomUpTo(game.width()).truncate(0)
-    	const y = 0.randomUpTo(game.height()).truncate(0)
-    	position = game.at(x,y) 
-	}*/
-	override method moverse() {
-		const x = (1..limites.ancho()).anyOne()
-        const y = (1..limites.alto()).anyOne()
-
-        position = game.at(x, y)
+        self.position(pantallaPrincipal.posicionDentroDeLaPantalla())
 	}
 	
 }

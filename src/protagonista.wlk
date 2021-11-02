@@ -127,9 +127,3 @@ const guerrero = new Protagonista(image = "guerrero1.png", arma = espada, miArea
 const arquera = new Protagonista(image = "arquera.png", arma = flecha, miArea = new AreaImagen(ancho = 2, alto = 3), posicionArmaX = 1, posicionArmaY = 4,barraVida=vidaPersonajePrincipal)
 const sacerdote = new Protagonista(image = "sacerdote.png", arma = aura, miArea = new AreaImagen(ancho = 1, alto = 5), posicionArmaX = -1, posicionArmaY = -1,barraVida=vidaPersonajePrincipal)//
 const angel = new Protagonista(image = "guerreroFinal.png", arma = luz, miArea = new AreaImagen(ancho = 1, alto = 5), posicionArmaX = 2, posicionArmaY = 2,barraVida=vidaPersonajePrincipal)
-
-/* 
-const arquero = new Protagonista(image="arquero.png", arma=new Arma())
-const sacerdote = new Protagonista(image="sacerdote.png", arma=new Arma())
-const angelGuerrero = new Protagonista(image="guerreroFinal.png", arma=new Arma())
-*/

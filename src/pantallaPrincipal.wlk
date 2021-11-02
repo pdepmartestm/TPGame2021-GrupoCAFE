@@ -25,14 +25,6 @@ object pantallaPrincipal {
 		nivel.iniciarNivel()	
 		
 	}
-	/* 
-	method iniciarNivel(){
-		
-		nivel.iniciarNivel()	
-			
-	}*/
-	
-
 	
 	method victoria(){
 		
@@ -52,7 +44,6 @@ object pantallaPrincipal {
 		game.boardGround(pantalla)
 	}
 	
-	
 	method perder(){
 		game.addVisual(pantallaDerrota)
 	}
@@ -70,7 +61,12 @@ object pantallaPrincipal {
 		game.say(quien, contenido)
 	}
 	
-	
+	method posicionDentroDeLaPantalla(){
+		const x = (1..limites.ancho()).anyOne()
+        const y = (1..limites.alto()).anyOne()
+
+        return game.at(x, y)
+	}
 	
 }
 

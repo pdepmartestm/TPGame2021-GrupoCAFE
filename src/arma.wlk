@@ -60,12 +60,7 @@ class Rayo inherits Arma{
 
 class Veneno inherits Arma{
 	override method movimiento(){
-		const x = (1..limites.ancho()).anyOne()
-    	const y = (1..limites.alto()).anyOne()
-    	
-    	//if(!self.estoyDentroDelRango(basilisco)){
-    		position = game.at(x, y)
-    	//}
+		position = pantallaPrincipal.posicionDentroDeLaPantalla()
 	}
 }
 
@@ -83,11 +78,7 @@ class Aura inherits Arma {
 
 class Humo inherits Arma {
 	override method movimiento(){
-		const x = (1..limites.ancho()).anyOne()
-        const y = (1..limites.alto()).anyOne()
-
-        position = game.at(x, y)
-    	
+		position = pantallaPrincipal.posicionDentroDeLaPantalla()    	
 	}
 }
 
@@ -107,39 +98,3 @@ const aura = new Aura(image="auraSacerdote.png",poderLetalidad=5,energiaRequerid
 const humoNegro = new Humo(image="humoNegro.png", poderLetalidad=5, miArea = new AreaImagen(ancho = 2, alto = 3),position=game.at(30,8))
 const fuego = new Fuego(image="fuego.png",poderLetalidad=5,energiaRequerida=10, position=game.at(5,7), miArea=new AreaImagen(ancho=2,alto=6))
 const luz = new Luz(image="luz.png",poderLetalidad=5,energiaRequerida=10, position=game.at(5,7), miArea=new AreaImagen(ancho=2,alto=2))
-
-/* 
-object espada inherits Arma {
-	var direccion = 1
-	
-	method image(){
-		if(direccion == 1)
-		return "espada.png"
-		else
-		return "espada2.png"
-	}
-	
-	method hacia(unaDireccion){
-		direccion = unaDireccion
-		if(direccion == 2){
-			position = position.left(3)
-			position = position.up(2)
-		}else{
-			position = position.right(3)
-			position = position.up(2)
-		}
-	}
-	
-}
-
-object rayoParalizador inherits Arma{
-	
-	method image() = "rayo.png"
-	
-	method lado(){
-		position = position.left(3)
-	}	
-		
-
-}
-*/
