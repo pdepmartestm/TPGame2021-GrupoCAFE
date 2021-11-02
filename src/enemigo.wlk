@@ -35,10 +35,17 @@ class Enemigo inherits Personaje {
 
 class Esqueleto inherits Personaje {
 	var property esEnemigo=true
+	/* 
 	override method moverse() {
 		const x = 15.randomUpTo(game.width()).truncate(0)
     	const y = 0.randomUpTo(game.height()).truncate(0)
     	position = game.at(x,y) 
+	}*/
+	override method moverse() {
+		const x = (1..limites.ancho()).anyOne()
+        const y = (1..limites.alto()).anyOne()
+
+        position = game.at(x, y)
 	}
 	
 }
@@ -58,7 +65,7 @@ const basilisco = new Enemigo(image = "basilisco.png",
 							)
 							
 const esqueleto = new Esqueleto(  image="esqueleto.png",
-								arma=rayo,
+								arma=humoNegro,
 								position=game.at(30,8),
 								miArea= new AreaImagen(ancho=2, alto=3),
 								barraVida = vidaEnemigo	
