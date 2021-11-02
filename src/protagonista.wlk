@@ -141,7 +141,7 @@ const arquera = new Protagonista(image = "arquera.png",
 								
 const sacerdote = new Protagonista(image = "sacerdote.png", 
 									arma = aura, 
-									miArea = new AreaImagen(ancho = 1, alto = 5), 
+									miArea = new AreaImagen(ancho = 2, alto = 5), 
 									posicionArmaX = -1, 
 									posicionArmaY = -1,
 									barraVida = vidaPersonajePrincipal
@@ -149,8 +149,8 @@ const sacerdote = new Protagonista(image = "sacerdote.png",
 								
 const angel = new Protagonista(image = "guerreroFinal.png", 
 								arma = luz, 
-								miArea = new AreaImagen(ancho = 1, alto = 5), 
-								posicionArmaX = 2, 
+								miArea = new AreaImagen(ancho = 2, alto = 5), 
+								posicionArmaX = 3, 
 								posicionArmaY = 2,
 								barraVida = vidaPersonajePrincipal
 							)

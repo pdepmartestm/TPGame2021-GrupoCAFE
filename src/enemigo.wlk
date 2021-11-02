@@ -73,14 +73,14 @@ const basilisco = new Enemigo(image = "basilisco.png",
 const esqueleto = new Esqueleto(  image="esqueleto.png",
 								arma=humoNegro,
 								position=game.at(30,8),
-								miArea= new AreaImagen(ancho=2, alto=3),
+								miArea= new AreaImagen(ancho = 4, alto = 3),
 								barraVida = vidaEnemigo	
 )
 
 const dragon = new Esqueleto(  image="dragonNegro0.png",
 								arma=fuego,
 								position=game.at(30,8),
-								miArea= new AreaImagen(ancho=2, alto=3),
+								miArea= new AreaImagen(ancho = 9, alto = 6),
 								barraVida = vidaEnemigo	
 )
 
