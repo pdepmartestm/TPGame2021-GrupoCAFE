@@ -57,30 +57,30 @@ class EnanoHechicero inherits Enemigo{
 	
 }
 const enanoHechicero = new EnanoHechicero(image="enanoHechicero.png", 
-									arma=rayo, 
-									position=game.at(30, 8), 
+									arma = rayo, 
+									position = game.at(30, 8), 
 									miArea = new AreaImagen(ancho = 2, alto = 3), 
 									barraVida = vidaEnemigo
 								)
 								
 const basilisco = new Enemigo(image = "basilisco.png", 
 								arma = veneno, 
-								position = game.at(15, 5), 
+								position = game.at(30, 8), 
 								miArea = new AreaImagen(ancho = 3, alto = 4), 
 								barraVida = vidaEnemigo
 							)
 							
 const esqueleto = new Esqueleto(  image="esqueleto.png",
-								arma=humoNegro,
-								position=game.at(30,8),
-								miArea= new AreaImagen(ancho = 4, alto = 3),
+								arma = humoNegro,
+								position = game.at(30,8),
+								miArea = new AreaImagen(ancho = 4, alto = 3),
 								barraVida = vidaEnemigo	
 )
 
 const dragon = new Esqueleto(  image="dragonNegro0.png",
-								arma=fuego,
-								position=game.at(30,8),
-								miArea= new AreaImagen(ancho = 9, alto = 6),
+								arma = fuego,
+								position = game.at(30,8),
+								miArea = new AreaImagen(ancho = 9, alto = 6),
 								barraVida = vidaEnemigo	
 )
 
