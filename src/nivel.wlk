@@ -92,17 +92,8 @@ class Nivel {
 		keyboard.x().onPressDo{	
 			
 			self.personajePrincipal().agregarArma()
-				
-			const colliders = game.colliders(self.personajePrincipal().arma()) //colliders : objetos que colisionan con el arma del personaje principal
-				
+							
 			self.personajePrincipal().usarArma()
-				
-			//Si el arma del protagonista colisiona con el enemigo
-				
-			/*colliders.forEach{cosa =>
-								cosa.recibeAtaque(self.personajePrincipal())	//.arma()
-											//game.onTick(500, "Impacto", {self.personajePrincipal().regenerarEnergia()})
-				}*/
 			
 			game.schedule(200, {personajePrincipal.arma().desaparece()})	
 			
@@ -131,9 +122,6 @@ class Nivel {
 	    			self.regenerarAtaqueEnemigo()
 	    		}
 	    	})
-	    	
-	    //Regenerar energia cada 3 segundos, podriamos hacer que la regenere agarrando objetos del mapa
-	    game.onTick(3000, "Regenerar energia", {self.personajePrincipal().regenerarEnergia()})
 		
 		//Mover enemigo
 		game.onTick(3000, "mover enemigo", {self.enemigo().moverse()})
