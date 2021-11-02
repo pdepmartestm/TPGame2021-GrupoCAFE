@@ -9,7 +9,7 @@ class Enemigo inherits Personaje {
 	
 	var property esEnemigo=true
 	
-	override method mensaje() = "Auch maldito, me voy a vengar!"	
+	override method mensaje() = "Auch! I am really angry. I'm going to take revenge!!!"	
 
 	override method posicionarArma() {
 		self.arma().position(self.position().x() -2, self.position().y())

@@ -21,6 +21,8 @@ class Vida {
 	   	game.addVisual(self)
 	}
    
+   	method interactuarElemento(elemento){
+	}
    
  }
  

@@ -7,17 +7,17 @@ import vidas.*
 
 class Protagonista inherits Personaje{
 	
-	var property energia = 100000
+	var property energia = 100
 	var property posicionArmaX
 	var property posicionArmaY
 	
-	override method mensaje() = "Arghh debo tener mas cuidado"
+	override method mensaje() = "Arghh that hurts!"
 	
 	override method atacar(){
 		
 		if(self.poseeEnergiaRequerida(self.arma())) self.usarArma()
 		else
-			pantallaPrincipal.emitirMensaje("No tienes energia suficiente" + self.energia().toString(), self)
+			pantallaPrincipal.emitirMensaje("You do not have enough energy" + self.energia().toString(), self)
 		
 	}
 	
@@ -56,7 +56,26 @@ class Protagonista inherits Personaje{
 	}
 	
 	method regenerarEnergia(){
-		if(energia < 50) energia = energia + 5	
+		if(energia < 100){ 
+			energia = energia + 5
+			game.say(self, "+5 energy")
+		}
+			
+	}
+	
+	method aumentarVida(cantidad){
+		if (vida<10){
+			if(vida+cantidad>10){
+				vida = 10
+			}else{
+			vida = vida + cantidad
+			game.say(self, "10+ life")
+			}
+		}
+		}
+		
+	override method interactuarElemento(elemento){
+		elemento.accion(self)
 	}
 	
 	method moverseHaciaLaDerecha(){

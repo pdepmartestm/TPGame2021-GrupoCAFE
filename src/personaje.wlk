@@ -51,6 +51,9 @@ class Personaje{
 	
 	method posicionarVida() {}
 	
+	method interactuarElemento(elemento){
+		
+	}
 	
 }
 

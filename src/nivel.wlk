@@ -6,7 +6,7 @@ import arma.*
 import personaje.*
 import fondos.*
 import vidas.*
-
+import elementos.*
 
 class Nivel {
 	
@@ -18,7 +18,8 @@ class Nivel {
 	var property tablaPersonaje = tableroPersonaje
 	var property tablaEnemigo = tableroEnemigo
 	var property tiempoAtaqueEnemigo = 0
-	
+	var property elementosUnicos = [itemKitMedico]
+	var property elementoRegenerable = itemEnergia
 	
 	method iniciarNivel(){
 		//Agrego fondo de pantalla del nivel
@@ -34,6 +35,42 @@ class Nivel {
 		
 		//Posiciono vidas de personajes
 		[self.personajePrincipal(),self.enemigo()].forEach({unObjeto=>unObjeto.agregarVida()})
+		
+				//Agregar elementos unicos (solo item Vida por ahora, se podrian agregar mas)
+		elementosUnicos.forEach({elem=>
+			pantallaPrincipal.agregarCosas(elem)
+			game.say(elem, "You can only pick one, use it wisely")
+		})
+		
+		//Agregar elementos regenerables (elemento energia)
+		pantallaPrincipal.agregarCosas(elementoRegenerable)
+		
+		//Item energia se regenera cada 3 seg
+		game.onTick(3000, "Regenerar item energia",{
+				if(!elementoRegenerable.activo()){
+					pantallaPrincipal.agregarCosas(elementoRegenerable)
+					elementoRegenerable.activo(true)
+					
+				}
+			}
+		)
+		
+				//OnCollide Elementos
+		
+		elementosUnicos.forEach{elem=>game.onCollideDo(elem, {
+			personaje=>
+			personaje.interactuarElemento(elem)
+			game.removeVisual(elem)
+
+			})
+		}	
+		
+		game.onCollideDo(elementoRegenerable, {
+			personaje=>
+			personaje.interactuarElemento(elementoRegenerable)
+			game.removeVisual(elementoRegenerable)
+			elementoRegenerable.activo(false)
+		})
 		
 			
 		//Asigno texto a tableros
