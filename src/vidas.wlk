@@ -15,16 +15,11 @@ class Vida {
     
    method actualizar(personaje){
    		game.removeVisual(self)
-   		
-   		var cantidad = personaje.vida()
-   	
-	   	var posX = personaje.position().x()
-	   	var posY = personaje.position().y() + 1
-	   	
-	   	self.position(posX,posY)
-	   		image = cantidad.toString() + "vidas.png"
-	   		game.addVisual(self)
-	   }
+   		const cantidad = personaje.vida()
+	   	personaje.posicionarVida()
+	   	image = cantidad.toString() + "vidas.png"
+	   	game.addVisual(self)
+	}
    
    
  }
@@ -32,6 +27,6 @@ class Vida {
 
  
  const vidaPersonajePrincipal =  new Vida(image="10vidas.png", position=game.at(3,6))
- const vidaEnemigoHechizero = new Vida(image="10vidas.png", position=game.at(30,8))
+ const vidaEnemigo = new Vida(image="10vidas.png", position=game.at(30,8))
 
 

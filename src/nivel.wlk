@@ -41,6 +41,9 @@ class Nivel {
 		tablaPersonaje.text()
 		tablaEnemigo.enemigo(self.enemigo())
 		tablaEnemigo.text()
+		
+		//actualizo barra de vida enemigo
+		enemigo.barraVida().actualizar(enemigo)
 			
 		//Configuro teclas para mover a personaje principal, ataca al enemigo con la x
 			

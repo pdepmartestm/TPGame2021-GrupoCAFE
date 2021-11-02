@@ -97,7 +97,7 @@ class Protagonista inherits Personaje{
 	
 	
 	override method posicionarVida() {
-		self.barraVida().position(self.position().x()-1, self.position().y()+3)
+		self.barraVida().position(self.position().x() - 2, self.position().y() + 5)
 	}
 	
 }
