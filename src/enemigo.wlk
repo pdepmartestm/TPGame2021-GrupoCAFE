@@ -18,9 +18,10 @@ class Enemigo inherits Personaje {
 		self.posicionarArma()
 		super()
 	}
+	/* 
 	override method posicionarVida() {
 		self.barraVida().position(self.position().x() - 1, self.position().y() + 4)
-	}
+	}*/
 	
 	
 	
@@ -30,6 +31,7 @@ class Esqueleto inherits Enemigo {
 	
 	override method moverse() {
         self.position(pantallaPrincipal.posicionDentroDeLaPantalla())
+        self.posicionarVida()
 	}
 	
 }
@@ -60,27 +62,31 @@ const enanoHechicero = new EnanoHechicero(image="enanoHechicero.png",
 									arma = rayo, 
 									position = game.at(30, 8), 
 									miArea = new AreaImagen(ancho = 2, alto = 3), 
-									barraVida = vidaEnemigo
+									barraVida = vidaEnemigo,
+									posicionBarraVida=game.at(0,3)
 								)
 								
 const basilisco = new Enemigo(image = "basilisco.png", 
 								arma = veneno, 
 								position = game.at(30, 8), 
 								miArea = new AreaImagen(ancho = 3, alto = 4), 
-								barraVida = vidaEnemigo
+								barraVida = vidaEnemigo,
+								posicionBarraVida=game.at(-1,5)
 							)
 							
 const esqueleto = new Esqueleto(  image="esqueleto.png",
 								arma = humoNegro,
 								position = game.at(30,8),
 								miArea = new AreaImagen(ancho = 4, alto = 3),
-								barraVida = vidaEnemigo	
+								barraVida = vidaEnemigo,
+								posicionBarraVida=game.at(1,4)	
 )
 
 const dragon = new Esqueleto(  image="dragonNegro0.png",
 								arma = fuego,
 								position = game.at(30,8),
 								miArea = new AreaImagen(ancho = 9, alto = 6),
-								barraVida = vidaEnemigo	
+								barraVida = vidaEnemigo,
+								posicionBarraVida=game.at(2,5)
 )
 

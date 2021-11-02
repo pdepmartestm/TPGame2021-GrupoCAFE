@@ -13,7 +13,7 @@ class Personaje{
 	var property mensaje = null
 	var property miArea = null
 	var property barraVida = null
-	
+	var property posicionBarraVida = game.at(-1,5)
 	method atacar(){
 		self.usarArma()		
 	}
@@ -49,7 +49,12 @@ class Personaje{
 	method posicionarArma(){}
 	
 	
-	method posicionarVida() {}
+	method posicionarVida() {
+		const x = self.posicionBarraVida().x()
+		const y = self.posicionBarraVida().y()
+		self.barraVida().position(self.position().x() + x, self.position().y() + y)
+	}
+
 	
 	method interactuarElemento(elemento){
 		
