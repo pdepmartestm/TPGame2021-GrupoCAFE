@@ -36,7 +36,7 @@ class Nivel {
 		//Posiciono vidas de personajes
 		[self.personajePrincipal(),self.enemigo()].forEach({unObjeto=>unObjeto.agregarVida()})
 		
-				//Agregar elementos unicos (solo item Vida por ahora, se podrian agregar mas)
+		//Agregar elementos unicos (solo item Vida por ahora, se podrian agregar mas)
 		elementosUnicos.forEach({elem=>
 			pantallaPrincipal.agregarCosas(elem)
 			game.say(elem, "You can only pick one, use it wisely")
@@ -55,8 +55,7 @@ class Nivel {
 			}
 		)
 		
-				//OnCollide Elementos
-		
+		//OnCollide Elementos
 		elementosUnicos.forEach{elem=>game.onCollideDo(elem, {
 			personaje=>
 			personaje.interactuarElemento(elem)
@@ -83,7 +82,6 @@ class Nivel {
 		enemigo.barraVida().actualizar(enemigo)
 			
 		//Configuro teclas para mover a personaje principal, ataca al enemigo con la x
-			
 		keyboard.left().onPressDo({self.personajePrincipal().moverseHaciaLaIzquierda()})
 		keyboard.right().onPressDo({self.personajePrincipal().moverseHaciaLaDerecha()})
 		keyboard.up().onPressDo({self.personajePrincipal().moverseHaciaArriba()})
@@ -99,24 +97,21 @@ class Nivel {
 			
 			enemigo.recibeAtaque(self.personajePrincipal())
 			
-			if(self.enemigo().vida() == 0){
+			if(self.enemigo().cumploCondicion()){
 				self.terminarNivel()
 			}
 		}
 			
 		//Enemigo ataca
-			
 		game.onTick(tiempoAtaqueEnemigo, "Ataque de enemigo", {self.enemigo().atacar()})
 			
 			
 		//Si el arma del enemigo colisiona con el protagonista
-			
 		game.onTick(200, "Colicion arma enemigo contra protagonista", {
 				personajePrincipal.recibeAtaque(enemigo)
 			})
 			
 	    //Cuando el ataque se va del mapa, generar uno nuevo
-	    	
 	    game.onTick(1000, "Regenerar ataque enemigo", {
 	    		if(self.enemigo().arma().position().x()<1){
 	    			self.regenerarAtaqueEnemigo()

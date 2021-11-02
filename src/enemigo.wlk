@@ -7,7 +7,7 @@ import vidas.*
 
 class Enemigo inherits Personaje {
 	
-	var property esEnemigo=true
+	var property esEnemigo = true
 	
 	override method mensaje() = "Auch! I am really angry. I'm going to take revenge!!!"	
 
@@ -22,19 +22,11 @@ class Enemigo inherits Personaje {
 		self.barraVida().position(self.position().x() - 1, self.position().y() + 4)
 	}
 	
-	/* 
-	method moverseRandom(){
-	//por ahora todos se mueven random, la idea seria
-	//que cada enemigo tenga su tipo de movimiento(VER)
-		const x = 0.randomUpTo(game.width()).truncate(0)
-		const y = 0.randomUpTo(game.height()).truncate(0)
-		position = game.at(x,y)
-	}
-*/
+	
+	
 }
 
-class Esqueleto inherits Personaje {
-	var property esEnemigo=true
+class Esqueleto inherits Enemigo {
 	/* 
 	override method moverse() {
 		const x = 15.randomUpTo(game.width()).truncate(0)
@@ -50,7 +42,29 @@ class Esqueleto inherits Personaje {
 	
 }
 
-const enanoHechicero = new Enemigo(image="enanoHechicero.png", 
+class EnanoHechicero inherits Enemigo{
+	var vecesQueMori = 0
+	const cosas = [self, self.arma(), self.barraVida()]
+	override method cumploCondicion() = super() && vecesQueMori == 3
+	override method recibeAtaque(personaje){
+		const yo = self
+		super(personaje) 
+		if(self.vida() == 0){
+			vecesQueMori ++
+			cosas.forEach({unObjeto => pantallaPrincipal.removerCosas(unObjeto)})
+			game.schedule(1000, {
+				self.vida(10)
+				pantallaPrincipal.agregarCosas(self)
+				self.agregarArma()
+				self.agregarVida()
+				self.barraVida().actualizar(self)
+			})	
+			
+		}
+	}
+	
+}
+const enanoHechicero = new EnanoHechicero(image="enanoHechicero.png", 
 									arma=rayo, 
 									position=game.at(30, 8), 
 									miArea = new AreaImagen(ancho = 2, alto = 3), 

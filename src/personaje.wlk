@@ -55,6 +55,7 @@ class Personaje{
 		
 	}
 	method moverse(){}
+	method cumploCondicion(){return self.vida() == 0}
 	
 }
 
