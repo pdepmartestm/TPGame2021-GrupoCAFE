@@ -34,7 +34,7 @@ class Enemigo inherits Personaje {
 }
 
 class Esqueleto inherits Personaje {
-	
+	var property esEnemigo=true
 	override method moverse() {
 		const x = 15.randomUpTo(game.width()).truncate(0)
     	const y = 0.randomUpTo(game.height()).truncate(0)
