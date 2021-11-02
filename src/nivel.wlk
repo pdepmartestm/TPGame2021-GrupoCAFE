@@ -135,6 +135,8 @@ class Nivel {
 	    //Regenerar energia cada 3 segundos, podriamos hacer que la regenere agarrando objetos del mapa
 	    game.onTick(3000, "Regenerar energia", {self.personajePrincipal().regenerarEnergia()})
 		
+		//Mover enemigo
+		game.onTick(3000, "mover enemigo", {self.enemigo().moverse()})
 		
 		
 	}
@@ -205,6 +207,15 @@ const segundoNivel = new Nivel(
 	personajePrincipal = arquera, 
 	enemigo = basilisco,
 	fondo = fondoNivelDos,
+	esUltimoNivel = false, 
+	siguienteNivel = tercerNivel,
+	tiempoAtaqueEnemigo = 3000
+)
+
+const tercerNivel = new Nivel(
+	personajePrincipal = sacerdote, 
+	enemigo = esqueleto,
+	fondo = fondoNivelTres,
 	esUltimoNivel = true, 
 	siguienteNivel = null,
 	tiempoAtaqueEnemigo = 3000

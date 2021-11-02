@@ -33,6 +33,16 @@ class Enemigo inherits Personaje {
 */
 }
 
+class Esqueleto inherits Personaje {
+	
+	override method moverse() {
+		const x = 15.randomUpTo(game.width()).truncate(0)
+    	const y = 0.randomUpTo(game.height()).truncate(0)
+    	position = game.at(x,y) 
+	}
+	
+}
+
 const enanoHechicero = new Enemigo(image="enanoHechicero.png", 
 									arma=rayo, 
 									position=game.at(30, 8), 
@@ -46,4 +56,12 @@ const basilisco = new Enemigo(image = "basilisco.png",
 								miArea = new AreaImagen(ancho = 3, alto = 4), 
 								barraVida = vidaEnemigo
 							)
+							
+const esqueleto = new Esqueleto(  image="esqueleto.png",
+								arma=rayo,
+								position=game.at(30,8),
+								miArea= new AreaImagen(ancho=2, alto=3),
+								barraVida = vidaEnemigo	
+)
+
 

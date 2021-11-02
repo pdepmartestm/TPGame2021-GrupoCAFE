@@ -54,6 +54,7 @@ class Personaje{
 	method interactuarElemento(elemento){
 		
 	}
+	method moverse(){}
 	
 }
 
