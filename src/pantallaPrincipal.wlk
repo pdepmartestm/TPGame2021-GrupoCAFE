@@ -8,7 +8,7 @@ import fondos.*
 object pantallaPrincipal {
 	
 	var property nivel = primerNivel
-	var property pantalla = "muro.png"
+	var property pantalla = "muro.jpg"
 	
 	 method menuInicial() {
 	 	
@@ -49,7 +49,7 @@ object pantallaPrincipal {
 		game.width(34)
 		game.height(18)
 		game.title("Warrior's Fights")
-		game.ground(pantalla)
+		game.boardGround(pantalla)
 	}
 	
 	
