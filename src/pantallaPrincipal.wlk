@@ -85,3 +85,14 @@ class Pantalla{
 const pantallaVictoria = new Pantalla(image="you-win.png")
 const pantallaDerrota= new Pantalla(image="game_over.png")
 
+class Music{
+	
+	var property nombre = null
+	
+	method play(){
+		game.sound(nombre).play()
+	}
+}
+
+const winnerMusic = new Music(nombre="winner.mp3")
+const loserMusic = new Music(nombre="loser.mp3")

@@ -36,7 +36,7 @@ class Protagonista inherits Personaje{
 		if(self.vida() == 0){
 			game.clear()
 			pantallaPrincipal.perder()
-			
+			loserMusic.play()
 		}
 	}
 	

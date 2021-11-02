@@ -137,6 +137,8 @@ class Nivel {
 		if(self.esUltimoNivel()){
 			
 			pantallaPrincipal.victoria()
+			winnerMusic.play()
+			
 				
 		}else{
 			
