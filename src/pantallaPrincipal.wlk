@@ -14,6 +14,13 @@ object pantallaPrincipal {
 	 	
 		self.configurarPantalla()
 		game.addVisual(menuPantallaInicial)
+		
+		//reproduce automáticamente el sonido
+        game.schedule(1, {=> sonidoIntro.play()})
+
+        //entra en un loop el sonido después de haber terminado
+        sonidoIntro.shouldLoop(true)
+        
 		keyboard.enter().onPressDo{self.iniciarJuego()}
 		keyboard.e().onPressDo{game.stop()}
 		
@@ -23,7 +30,7 @@ object pantallaPrincipal {
 		
 		game.clear()
 		nivel.iniciarNivel()	
-		
+		sonidoIntro.stop()
 	}
 	
 	method victoria(){
@@ -68,7 +75,24 @@ object pantallaPrincipal {
         return game.at(x, y)
 	}
 	
+	
+	
 }
+
+object sonido {
+
+    method sonido(audio) = game.sound(audio + ".mp3")
+
+    method reproducir(audio) {
+        self.sonido(audio).play()
+    }
+
+    method parar(audio) {
+        self.sonido(audio).stop()
+    }
+
+}
+const sonidoIntro = sonido.sonido("intro")
 
 object limites{
 	

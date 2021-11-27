@@ -27,7 +27,7 @@ class Enemigo inherits Personaje {
 	
 }
 
-class Esqueleto inherits Enemigo {
+class EnemigoConMovimientoAleatorio inherits Enemigo {
 	
 	override method moverse() {
         self.position(pantallaPrincipal.posicionDentroDeLaPantalla())
@@ -38,19 +38,21 @@ class Esqueleto inherits Enemigo {
 
 class EnanoHechicero inherits Enemigo{
 	var vecesQueMori = 0
-	const cosas = [self, self.arma(), self.barraVida()]
+	/*const cosas = [self, self.arma(), self.barraVida()]*/
+	const cosas = [self, self.arma()]
 	override method cumploCondicion() = super() && vecesQueMori == 3
+	
 	override method recibeAtaque(personaje){
 		const yo = self
 		super(personaje) 
 		if(self.vida() == 0){
-			vecesQueMori ++
+			vecesQueMori+=1
 			cosas.forEach({unObjeto => pantallaPrincipal.removerCosas(unObjeto)})
 			game.schedule(1000, {
 				self.vida(10)
 				pantallaPrincipal.agregarCosas(self)
 				self.agregarArma()
-				self.agregarVida()
+				/*self.agregarVida()*/
 				self.barraVida().actualizar(self)
 			})	
 			
@@ -68,13 +70,13 @@ const enanoHechicero = new EnanoHechicero(image="enanoHechicero.png",
 								
 const basilisco = new Enemigo(image = "basilisco.png", 
 								arma = veneno, 
-								position = game.at(30, 8), 
+								position = game.at(25, 8), 
 								miArea = new AreaImagen(ancho = 3, alto = 4), 
 								barraVida = vidaEnemigo,
 								posicionBarraVida=game.at(-1,5)
 							)
 							
-const esqueleto = new Esqueleto(  image="esqueleto.png",
+const esqueleto = new EnemigoConMovimientoAleatorio(  image="esqueleto.png",
 								arma = humoNegro,
 								position = game.at(30,8),
 								miArea = new AreaImagen(ancho = 4, alto = 3),
@@ -82,7 +84,7 @@ const esqueleto = new Esqueleto(  image="esqueleto.png",
 								posicionBarraVida=game.at(1,4)	
 )
 
-const dragon = new Esqueleto(  image="dragonNegro0.png",
+const dragon = new EnemigoConMovimientoAleatorio(  image="dragonNegro0.png",
 								arma = fuego,
 								position = game.at(30,8),
 								miArea = new AreaImagen(ancho = 9, alto = 6),

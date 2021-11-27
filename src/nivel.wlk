@@ -26,7 +26,6 @@ class Nivel {
 		pantallaPrincipal.agregarCosas(self.fondo())
 		
 		//Agrego visuales de personajes
-		
 		[self.personajePrincipal(),self.enemigo(),tablaPersonaje,tablaEnemigo].forEach({unObjeto=>pantallaPrincipal.agregarCosas(unObjeto)})
 
 		//Posiciono armas de personajes
@@ -89,17 +88,19 @@ class Nivel {
 			
 		keyboard.x().onPressDo{	
 			
+			
 			self.personajePrincipal().agregarArma()
 							
 			self.personajePrincipal().usarArma()
 			
-			game.schedule(200, {personajePrincipal.arma().desaparece()})	
+			game.schedule(50, {personajePrincipal.arma().desaparece()})	
 			
 			enemigo.recibeAtaque(self.personajePrincipal())
 			
 			if(self.enemigo().cumploCondicion()){
 				self.terminarNivel()
 			}
+			
 		}
 			
 		//Enemigo ataca

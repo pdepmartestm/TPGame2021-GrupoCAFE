@@ -42,29 +42,21 @@ class Arma{
 	}
 }
 
-class Espada inherits Arma{
-	override method movimiento(){
-		
-		//position = position.left(3)
-		//position = position.up(2)
-		
-	}
-}
 
-class Rayo inherits Arma{
+class ArmaDisparadaHaciaIzquierda inherits Arma{
 	override method movimiento(){
 		
 		position = position.left(1)
 	}
 }
 
-class Veneno inherits Arma{
+class ArmaConDisparoAleatorio inherits Arma{
 	override method movimiento(){
 		position = pantallaPrincipal.posicionDentroDeLaPantalla()
 	}
 }
 
-class Flecha inherits Arma{
+class ArmaDisparadaHaciaDerecha inherits Arma{
 	override method movimiento(){
 		
 		position = position.right(5)
@@ -72,29 +64,11 @@ class Flecha inherits Arma{
 }
 
 
-class Aura inherits Arma {
-	
-}
-
-class Humo inherits Arma {
-	override method movimiento(){
-		position = pantallaPrincipal.posicionDentroDeLaPantalla()    	
-	}
-}
-
-class Fuego inherits Veneno {
-	
-}
-
-class Luz inherits Arma {
-	
-}
-
-const espada = new Espada(image="espada.png", poderLetalidad=5, energiaRequerida=10, position=game.at(5,7), miArea = new AreaImagen(ancho = 2, alto = 2))
-const flecha = new Flecha(image = "flecha.png", poderLetalidad=5, energiaRequerida=10, position=game.at(5,7), miArea = new AreaImagen(ancho = 2, alto = 1))
-const rayo = new Rayo(image="rayo.png", poderLetalidad=5, miArea = new AreaImagen(ancho = 2, alto = 3))
-const veneno = new Veneno(image="charcoVeneno.png", poderLetalidad=5, miArea = new AreaImagen(ancho = 3, alto = 2))
-const aura = new Aura(image="auraSacerdote.png",poderLetalidad=5,energiaRequerida=10, position=game.at(5,7), miArea=new AreaImagen(ancho=2,alto=6))
-const humoNegro = new Humo(image="humoNegro.png", poderLetalidad=5, miArea = new AreaImagen(ancho = 2, alto = 3),position=game.at(30,8))
-const fuego = new Fuego(image="fuego.png",poderLetalidad=5,energiaRequerida=10, position=game.at(5,7), miArea=new AreaImagen(ancho=2,alto=6))
-const luz = new Luz(image="luz.png",poderLetalidad=5,energiaRequerida=10, position=game.at(5,7), miArea=new AreaImagen(ancho=2,alto=2))
+const espada = new Arma(image="espada.png", poderLetalidad=5, energiaRequerida=10, position=game.at(5,7), miArea = new AreaImagen(ancho = 2, alto = 2))
+const flecha = new ArmaDisparadaHaciaDerecha(image = "flecha.png", poderLetalidad=5, energiaRequerida=10, position=game.at(5,7), miArea = new AreaImagen(ancho = 2, alto = 1))
+const rayo = new ArmaDisparadaHaciaIzquierda(image="rayo.png", poderLetalidad=5, miArea = new AreaImagen(ancho = 2, alto = 3))
+const veneno = new ArmaConDisparoAleatorio(image="charcoVeneno.png", poderLetalidad=5, miArea = new AreaImagen(ancho = 3, alto = 2))
+const aura = new Arma(image="auraSacerdote.png",poderLetalidad=5,energiaRequerida=10, position=game.at(5,7), miArea=new AreaImagen(ancho=2,alto=6))
+const humoNegro = new ArmaConDisparoAleatorio(image="humoNegro.png", poderLetalidad=5, miArea = new AreaImagen(ancho = 2, alto = 3),position=game.at(30,8))
+const fuego = new ArmaConDisparoAleatorio(image="fuego.png",poderLetalidad=5,energiaRequerida=10, position=game.at(5,7), miArea=new AreaImagen(ancho=2,alto=6))
+const luz = new Arma(image="luz.png",poderLetalidad=5,energiaRequerida=10, position=game.at(5,7), miArea=new AreaImagen(ancho=2,alto=2))

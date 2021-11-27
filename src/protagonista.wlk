@@ -47,8 +47,8 @@ class Protagonista inherits Personaje{
 	}
 	
 	override method agregarArma(){
-		self.posicionarArma()
 		super()
+		self.posicionarArma()	
 	}
 	
 	method restarEnergia(cantidad){

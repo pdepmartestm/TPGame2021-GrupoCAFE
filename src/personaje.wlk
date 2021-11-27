@@ -14,6 +14,7 @@ class Personaje{
 	var property miArea = null
 	var property barraVida = null
 	var property posicionBarraVida = game.at(-1,5)
+	
 	method atacar(){
 		self.usarArma()		
 	}
@@ -24,14 +25,13 @@ class Personaje{
 	
 	method restarVida(cantidad){
 		vida -= cantidad
-		self.barraVida().actualizar(self)
-		
+		self.barraVida().actualizar(self)	
 	}
 	
 	method recibeAtaque(personaje){
 		if(personaje.arma().estoyDentroDelRango(self)){
 			self.restarVida(personaje.arma().poderLetalidad())
-			personaje.posicionarArma()
+			/*personaje.posicionarArma() no se usa*/
 			pantallaPrincipal.emitirMensaje(self.mensaje(), self)
 		}
 	}

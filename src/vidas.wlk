@@ -19,11 +19,7 @@ class Vida {
 	   	personaje.posicionarVida()
 	   	image = cantidad.toString() + "vidas.png"
 	   	game.addVisual(self)
-	}
-   
-   	method interactuarElemento(elemento){
-	}
-   
+	} 
  }
  
 
