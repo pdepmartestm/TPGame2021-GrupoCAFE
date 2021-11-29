@@ -10,7 +10,7 @@ class Elemento {
 
 class Energia inherits Elemento{
 	
-	var property activo=true
+	var property activo = true
 	
 	method accion(personaje){
 		personaje.regenerarEnergia()

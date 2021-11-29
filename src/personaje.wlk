@@ -29,6 +29,7 @@ class Personaje{
 		if(personaje.arma().colisionoConPersonaje(self) && self.vida()>=personaje.arma().poderLetalidad()){
 			self.restarVida(personaje.arma().poderLetalidad())
 			pantallaPrincipal.emitirMensaje(self.mensaje(), self)
+			personaje.posicionarArma()
 		}
 	}
 	

@@ -20,6 +20,8 @@ class Nivel {
 	var property elementosUnicos = [itemKitMedico]
 	var property elementoRegenerable = itemEnergia
 	const sonidoAmbiente = null
+	const loserMusic = sonido.sonido("loser")
+	const winnerMusic = sonido.sonido("winner")
 	
 	method iniciarNivel(){
 		//Agrego fondo de pantalla del nivel
@@ -116,6 +118,12 @@ class Nivel {
 		//Si el arma del enemigo colisiona con el protagonista
 		game.onTick(1000, "Colicion arma enemigo contra protagonista", {
 				personajePrincipal.recibeAtaque(enemigo)
+				if(personajePrincipal.vida() == 0){
+					sonidoAmbiente.stop()
+					game.clear()
+					pantallaPrincipal.perder()
+					loserMusic.play()
+				}
 			})
 			
 	    //Cuando el ataque se va del mapa, generar uno nuevo
@@ -134,7 +142,6 @@ class Nivel {
 	method regenerarAtaqueEnemigo(){
 		self.enemigo().posicionarArma()
 	}
-	
 	
 	method terminarNivel(){
 		

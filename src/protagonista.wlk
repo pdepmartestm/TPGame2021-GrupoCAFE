@@ -25,16 +25,7 @@ class Protagonista inherits Personaje{
 	
 	method poseeEnergiaRequerida(arma) = energia >= arma.energiaRequerida()
 	
-	override method recibeAtaque(enemigo){
-		
-		super(enemigo)
-		if(self.vida() == 0){
-			game.clear()
-			pantallaPrincipal.perder()
-			loserMusic.play()
-		}
-	}
-	
+
 	override method posicionarArma(){
 		const x = self.position().x() + self.posicionArmaX()
 		const y = self.position().y() + self.posicionArmaY()

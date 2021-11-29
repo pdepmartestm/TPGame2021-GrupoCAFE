@@ -118,6 +118,7 @@ class Music{
 		game.sound(nombre).play()
 	}
 }
-
+/*
 const winnerMusic = new Music(nombre="winner.mp3")
 const loserMusic = new Music(nombre="loser.mp3")
+ */
