@@ -38,28 +38,33 @@ class EnemigoConMovimientoAleatorio inherits Enemigo {
 
 class EnanoHechicero inherits Enemigo{
 	var vecesQueMori = 0
-	/*const cosas = [self, self.arma(), self.barraVida()]*/
-	const cosas = [self, self.arma()]
+	const cosas = [self, self.arma()]	
 	override method cumploCondicion() = super() && vecesQueMori == 3
 	
 	override method recibeAtaque(personaje){
-		const yo = self
-		super(personaje) 
-		if(self.vida() == 0){
-			vecesQueMori+=1
-			cosas.forEach({unObjeto => pantallaPrincipal.removerCosas(unObjeto)})
-			game.schedule(1000, {
-				self.vida(10)
-				pantallaPrincipal.agregarCosas(self)
-				self.agregarArma()
-				/*self.agregarVida()*/
-				self.barraVida().actualizar(self)
-			})	
-			
+		
+		if(personaje.arma().colisionoConPersonaje(self) && self.vida()>=personaje.arma().poderLetalidad()){
+			self.restarVida(personaje.arma().poderLetalidad())
+			pantallaPrincipal.emitirMensaje(self.mensaje(), self)
+				
+				if(self.vida() == 0){
+					
+					vecesQueMori+=1
+					cosas.forEach({unObjeto => pantallaPrincipal.quitar(unObjeto)})
+					
+						game.schedule(1000, {
+						self.vida(10)
+						pantallaPrincipal.mostrar(self)
+						self.agregarArma()
+						self.barraVida().actualizar(self)
+					})	
 		}
+	
 	}
 	
 }
+}
+
 const enanoHechicero = new EnanoHechicero(image="enanoHechicero.png", 
 									arma = rayo, 
 									position = game.at(30, 8), 

@@ -15,20 +15,18 @@ class Protagonista inherits Personaje{
 	
 	override method atacar(){
 		
-		if(self.poseeEnergiaRequerida(self.arma())) self.usarArma()
+		if(self.poseeEnergiaRequerida(self.arma())) {
+			self.agregarArma()
+			self.restarEnergia(self.arma().energiaRequerida()) //pierde energia		
+			self.arma().movimiento()
+			game.schedule(50, {self.arma().desaparece()})	
+		}
 		else
 			pantallaPrincipal.emitirMensaje("You do not have enough energy" + self.energia().toString(), self)
 		
 	}
 	
 	method poseeEnergiaRequerida(arma) = energia >= arma.energiaRequerida()
-	
-	
-	override method usarArma(){
-		
-		self.restarEnergia(self.arma().energiaRequerida()) //pierde energia		
-		self.arma().movimiento()
-	}
 	
 	override method recibeAtaque(enemigo){
 		
@@ -52,12 +50,12 @@ class Protagonista inherits Personaje{
 	}
 	
 	method restarEnergia(cantidad){
-		if(energia > 0) energia = energia - cantidad
+		if(energia > 0) energia -= cantidad
 	}
 	
 	method regenerarEnergia(){
 		if(energia < 100){ 
-			energia = energia + 5
+			energia += 5
 			game.say(self, "+5 energy")
 		}
 			
@@ -80,7 +78,7 @@ class Protagonista inherits Personaje{
 	
 	method moverseHaciaLaDerecha(){
 		
-		if(self.position().x()<limites.ancho()){
+		if(self.position().x()<(pantallaPrincipal.ancho()-2)){
 			position = self.position().right(1)
 			self.posicionarArma()
 			self.posicionarVida()
@@ -98,7 +96,7 @@ class Protagonista inherits Personaje{
 	
 	method moverseHaciaArriba(){
 		
-		if(self.position().y()<limites.alto()){
+		if(self.position().y()<(pantallaPrincipal.alto()-6)){
 			position = self.position().up(1)
 			self.posicionarArma()
 			self.posicionarVida()

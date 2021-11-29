@@ -16,11 +16,7 @@ class Personaje{
 	var property posicionBarraVida = game.at(-1,5)
 	
 	method atacar(){
-		self.usarArma()		
-	}
-	
-	method usarArma(){
-		arma.movimiento()
+		arma.movimiento()		
 	}
 	
 	method restarVida(cantidad){
@@ -29,25 +25,23 @@ class Personaje{
 	}
 	
 	method recibeAtaque(personaje){
-		if(personaje.arma().estoyDentroDelRango(self)){
+		if(personaje.arma().colisionoConPersonaje(self) && self.vida()>=personaje.arma().poderLetalidad()){
 			self.restarVida(personaje.arma().poderLetalidad())
-			/*personaje.posicionarArma() no se usa*/
 			pantallaPrincipal.emitirMensaje(self.mensaje(), self)
 		}
 	}
 	
 	method agregarArma(){
-		game.addVisual(self.arma())
+		pantallaPrincipal.mostrar(self.arma())
 	}
 	
 	
 	method agregarVida(){
 		self.posicionarVida()
-		game.addVisual(self.barraVida())
+		pantallaPrincipal.mostrar(self.barraVida())
 	}
 	
-	method posicionarArma(){}
-	
+	method posicionarArma()
 	
 	method posicionarVida() {
 		const x = self.posicionBarraVida().x()

@@ -17,7 +17,7 @@ class Energia inherits Elemento{
 	}
 	
 	method aparecer(){
-		pantallaPrincipal.agregarCosas(self)
+		pantallaPrincipal.mostrar(self)
 	}
 			
 }

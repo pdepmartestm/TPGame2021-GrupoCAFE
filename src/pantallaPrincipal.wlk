@@ -5,15 +5,18 @@ import enemigo.*
 import nivel.*
 import fondos.*
 
+//PANTALLA PRINCIPAL
 object pantallaPrincipal {
 	
 	var property nivel = primerNivel
 	var property pantalla = "muro.jpg"
+	var property ancho = 34
+	var property alto = 18
 	
-	 method menuInicial() {
+	method menuInicial() {
 	 	
 		self.configurarPantalla()
-		game.addVisual(menuPantallaInicial)
+		self.mostrar(menuPantallaInicial)
 		
 		//reproduce automáticamente el sonido
         game.schedule(1, {=> sonidoIntro.play()})
@@ -29,38 +32,39 @@ object pantallaPrincipal {
 	method iniciarJuego() {
 		
 		game.clear()
-		nivel.iniciarNivel()	
+		
+		if(nivel === primerNivel)	{
 		sonidoIntro.stop()
+		}
+		
+		self.nivel().iniciarNivel()
+		
+		
 	}
 	
 	method victoria(){
 		
-		self.agregarCosas(pantallaVictoria) 
-	}
-		
-	method siguienteNivel(siguienteNivel){
-		nivel=siguienteNivel
-		siguienteNivel.iniciarNivel()
+		self.mostrar(pantallaVictoria) 
 	}
 	
 	
 	method configurarPantalla(){
-		game.width(34)
-		game.height(18)
+		game.width(ancho)
+		game.height(alto)
 		game.title("Warrior's Fights")
 		game.boardGround(pantalla)
 	}
 	
 	method perder(){
-		game.addVisual(pantallaDerrota)
+		self.mostrar(pantallaDerrota)
 	}
 	
-	method agregarCosas(algo){
+	method mostrar(algo){
 		game.addVisual(algo)
 	}
 
 	
-	method removerCosas(algo){
+	method quitar(algo){
 		game.removeVisual(algo)
 	}
 	
@@ -69,8 +73,8 @@ object pantallaPrincipal {
 	}
 	
 	method posicionDentroDeLaPantalla(){
-		const x = (1..limites.ancho()).anyOne()
-        const y = (1..limites.alto()).anyOne()
+		const x = (1..self.alto()-6).anyOne()
+        const y = (1..self.ancho()-2).anyOne()
 
         return game.at(x, y)
 	}
@@ -79,6 +83,7 @@ object pantallaPrincipal {
 	
 }
 
+//SONIDO
 object sonido {
 
     method sonido(audio) = game.sound(audio + ".mp3")
@@ -94,13 +99,7 @@ object sonido {
 }
 const sonidoIntro = sonido.sonido("intro")
 
-object limites{
-	
-	var property alto=game.height() - 6
-	var property ancho=game.width() - 2
-
-}
-
+//PANTALLA PARA DERROTA Y VICTORIA
 class Pantalla{
 	var property image
 	var property position=game.at(8,4) //ponerlo en el centro
@@ -109,6 +108,7 @@ class Pantalla{
 const pantallaVictoria = new Pantalla(image="you-win.png")
 const pantallaDerrota= new Pantalla(image="game_over.png")
 
+//MUSICA PARA DERROTA Y VICTORIA
 class Music{
 	
 	var property nombre = null

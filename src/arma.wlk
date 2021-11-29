@@ -18,14 +18,14 @@ class Arma{
 	method recibeAtaque(armaPersonaje){}
 	
 	method desaparece(){
-		return game.removeVisual(self)	
+		pantallaPrincipal.quitar(self)	
 	}
 	
 	method position(x,y){
 		position=game.at(x,y)
 	}
 	
-	method estoyDentroDelRango(unPersonaje){
+	method colisionoConPersonaje(unPersonaje){
 		
 		const coinciden = true
 		const anchoPersonaje = unPersonaje.miArea().ancho()
@@ -38,8 +38,11 @@ class Arma{
 		if(unPersonaje.position().y() > (self.position().y() + altoArma)) return !coinciden 
 		if(self.position().y() > (unPersonaje.position().y() + altoPersonaje)) return !coinciden 
 		
+		
 		return coinciden
 	}
+	
+
 }
 
 

@@ -20,13 +20,14 @@ class Nivel {
 	var property tiempoAtaqueEnemigo = 0
 	var property elementosUnicos = [itemKitMedico]
 	var property elementoRegenerable = itemEnergia
+	var property mensaje 
 	
 	method iniciarNivel(){
 		//Agrego fondo de pantalla del nivel
-		pantallaPrincipal.agregarCosas(self.fondo())
+		pantallaPrincipal.mostrar(self.fondo())
 		
 		//Agrego visuales de personajes
-		[self.personajePrincipal(),self.enemigo(),tablaPersonaje,tablaEnemigo].forEach({unObjeto=>pantallaPrincipal.agregarCosas(unObjeto)})
+		[self.personajePrincipal(),self.enemigo(),tablaPersonaje,tablaEnemigo].forEach({unObjeto=>pantallaPrincipal.mostrar(unObjeto)})
 
 		//Posiciono armas de personajes
 		
@@ -37,17 +38,19 @@ class Nivel {
 		
 		//Agregar elementos unicos (solo item Vida por ahora, se podrian agregar mas)
 		elementosUnicos.forEach({elem=>
-			pantallaPrincipal.agregarCosas(elem)
+			pantallaPrincipal.mostrar(elem)
 			game.say(elem, "You can only pick one, use it wisely")
 		})
 		
 		//Agregar elementos regenerables (elemento energia)
-		pantallaPrincipal.agregarCosas(elementoRegenerable)
+		pantallaPrincipal.mostrar(elementoRegenerable)
+		
+		/*pantallaPrincipal.emitirMensaje(mensaje,ayuda)*/
 		
 		//Item energia se regenera cada 3 seg
 		game.onTick(3000, "Regenerar item energia",{
 				if(!elementoRegenerable.activo()){
-					pantallaPrincipal.agregarCosas(elementoRegenerable)
+					pantallaPrincipal.mostrar(elementoRegenerable)
 					elementoRegenerable.activo(true)
 					
 				}
@@ -56,7 +59,7 @@ class Nivel {
 		
 		//OnCollide Elementos
 		elementosUnicos.forEach{elem=>game.onCollideDo(elem, {
-			personaje=>
+			personaje =>
 			personaje.interactuarElemento(elem)
 			game.removeVisual(elem)
 
@@ -88,27 +91,24 @@ class Nivel {
 			
 		keyboard.x().onPressDo{	
 			
-			
-			self.personajePrincipal().agregarArma()
-							
-			self.personajePrincipal().usarArma()
-			
-			game.schedule(50, {personajePrincipal.arma().desaparece()})	
-			
-			enemigo.recibeAtaque(self.personajePrincipal())
-			
-			if(self.enemigo().cumploCondicion()){
-				self.terminarNivel()
-			}
+								
+				self.personajePrincipal().atacar()
+
+				enemigo.recibeAtaque(self.personajePrincipal())
+				
+				if(self.enemigo().cumploCondicion()){
+					self.terminarNivel()
+				}
 			
 		}
+		
 			
 		//Enemigo ataca
 		game.onTick(tiempoAtaqueEnemigo, "Ataque de enemigo", {self.enemigo().atacar()})
 			
 			
 		//Si el arma del enemigo colisiona con el protagonista
-		game.onTick(200, "Colicion arma enemigo contra protagonista", {
+		game.onTick(1000, "Colicion arma enemigo contra protagonista", {
 				personajePrincipal.recibeAtaque(enemigo)
 			})
 			
@@ -142,17 +142,17 @@ class Nivel {
 			
 				
 		}else{
-			
-			pantallaPrincipal.siguienteNivel(siguienteNivel)
+			pantallaPrincipal.nivel(siguienteNivel)
+			pantallaPrincipal.iniciarJuego()
 		}
 		
 	}	
 	
-
-	
-	
 }
 
+object ayuda{
+	method position() = game.origin()
+}
 object tableroPersonaje {
 	var property position = game.center()//at(1, 15)//[1,15]
 	var property personaje = null
@@ -186,16 +186,17 @@ const primerNivel = new Nivel(
 	fondo = fondoNivelUno,
 	siguienteNivel = segundoNivel, 
 	esUltimoNivel = false,
-	tiempoAtaqueEnemigo = 200
-)
-	
+	tiempoAtaqueEnemigo = 200,
+	mensaje = "Debes matar al hechicero 3 veces"
+)	
 const segundoNivel = new Nivel(
 	personajePrincipal = arquera, 
 	enemigo = basilisco,
 	fondo = fondoNivelDos,
 	esUltimoNivel = false, 
 	siguienteNivel = tercerNivel,
-	tiempoAtaqueEnemigo = 3000
+	tiempoAtaqueEnemigo = 3000,
+	mensaje = "Debes matar al basilisco, cuidado con el veneno"
 )
 
 const tercerNivel = new Nivel(
@@ -204,7 +205,8 @@ const tercerNivel = new Nivel(
 	fondo = fondoNivelTres,
 	esUltimoNivel = false, 
 	siguienteNivel = cuartoNivel,
-	tiempoAtaqueEnemigo = 3000
+	tiempoAtaqueEnemigo = 3000,
+	mensaje = "Usa tu aura para matar al esqueleto!!!"
 )
 
 const cuartoNivel = new Nivel(
@@ -213,5 +215,6 @@ const cuartoNivel = new Nivel(
 	fondo = fondoNivelCuatro,
 	esUltimoNivel = true, 
 	siguienteNivel = null,
-	tiempoAtaqueEnemigo = 3000
+	tiempoAtaqueEnemigo = 3000,
+	mensaje = "Cuidado, mata al dragon para ganar"
 )
