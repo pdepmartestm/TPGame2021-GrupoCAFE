@@ -89,13 +89,9 @@ object sonido {
 
     method sonido(audio) = game.sound(audio + ".mp3")
 
-    method reproducir(audio) {
-        self.sonido(audio).play()
-    }
-
-    method parar(audio) {
-        self.sonido(audio).stop()
-    }
+    method reproducir(audio) = self.sonido(audio).play()
+    
+    method parar(audio) = self.sonido(audio).stop()
 
 }
 
@@ -108,17 +104,3 @@ class Pantalla{
 
 const pantallaVictoria = new Pantalla(image="you-win.png")
 const pantallaDerrota= new Pantalla(image="game_over.png")
-
-//MUSICA PARA DERROTA Y VICTORIA
-class Music{
-	
-	var property nombre = null
-	
-	method play(){
-		game.sound(nombre).play()
-	}
-}
-/*
-const winnerMusic = new Music(nombre="winner.mp3")
-const loserMusic = new Music(nombre="loser.mp3")
- */
