@@ -145,7 +145,8 @@ const sacerdote = new Protagonista(image = "sacerdote.png",
 									miArea = new AreaImagen(ancho = 2, alto = 5), 
 									posicionArmaX = -1, 
 									posicionArmaY = -1,
-									barraVida = vidaPersonajePrincipal
+									barraVida = vidaPersonajePrincipal,
+									audioAtaque = "sonidoAuraSacerdote"
 								)
 								
 const angel = new Protagonista(image = "guerreroFinal.png", 
@@ -153,5 +154,6 @@ const angel = new Protagonista(image = "guerreroFinal.png",
 								miArea = new AreaImagen(ancho = 2, alto = 5), 
 								posicionArmaX = 3, 
 								posicionArmaY = 2,
-								barraVida = vidaPersonajePrincipal
+								barraVida = vidaPersonajePrincipal,
+								audioAtaque = "sonidoAtaqueAngel"
 							)
