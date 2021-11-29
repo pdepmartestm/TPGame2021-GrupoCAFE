@@ -14,16 +14,12 @@ class Protagonista inherits Personaje{
 	override method mensaje() = "Arghh that hurts!"
 	
 	override method atacar(){
-		
-		if(self.poseeEnergiaRequerida(self.arma())) {
+
 			self.agregarArma()
 			sonido.reproducir(self.audioAtaque())
 			self.restarEnergia(self.arma().energiaRequerida()) //pierde energia		
 			self.arma().movimiento()
 			game.schedule(50, {self.arma().desaparece()})	
-		}
-		else
-			pantallaPrincipal.emitirMensaje("You do not have enough energy" + self.energia().toString(), self)
 		
 	}
 	

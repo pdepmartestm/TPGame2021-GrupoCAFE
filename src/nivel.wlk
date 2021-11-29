@@ -78,6 +78,9 @@ class Nivel {
 		
 		//actualizo barra de vida enemigo
 		enemigo.barraVida().actualizar(enemigo)
+		
+		//actualizo barra de vida personaje principal
+		personajePrincipal.barraVida().actualizar(personajePrincipal)
 			
 		//Configuro teclas para mover a personaje principal, ataca al enemigo con la x
 		keyboard.left().onPressDo({self.personajePrincipal().moverseHaciaLaIzquierda()})
@@ -87,14 +90,16 @@ class Nivel {
 			
 		keyboard.x().onPressDo{	
 			
-								
+			if(personajePrincipal.poseeEnergiaRequerida(personajePrincipal.arma())) {			
 				self.personajePrincipal().atacar()
-
 				enemigo.recibeAtaque(self.personajePrincipal())
+			}
+			else
+				pantallaPrincipal.emitirMensaje("You do not have enough energy" + personajePrincipal.energia().toString(), personajePrincipal)
 				
-				if(self.enemigo().cumploCondicion()){
-					self.terminarNivel()
-				}
+			if(self.enemigo().cumploCondicion()){
+				self.terminarNivel()
+			}
 			
 		}
 		
