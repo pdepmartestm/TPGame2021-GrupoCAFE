@@ -20,7 +20,7 @@ class Vida {
 	   	image = cantidad.toString() + "vidas.png"
 	   	game.addVisual(self)
 	}
-	method interactuarElemento(){} 
+	method interactuarElemento(elem){} 
  }
  
 
