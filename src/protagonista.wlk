@@ -52,8 +52,8 @@ class Protagonista inherits Personaje{
 	
 	method regenerarEnergia(){
 		if(energia < 100){ 
-			energia += 5
-			game.say(self, "+5 energy")
+			energia += 10
+			game.say(self, "+10 energy")
 		}
 			
 	}
