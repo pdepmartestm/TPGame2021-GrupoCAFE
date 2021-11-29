@@ -152,7 +152,6 @@ class Nivel {
 			pantallaPrincipal.nivel(siguienteNivel)
 			pantallaPrincipal.iniciarJuego()
 		}
-		
 	}	
 	
 }
