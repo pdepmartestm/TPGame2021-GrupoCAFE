@@ -16,18 +16,16 @@ class Nivel {
 	var property siguienteNivel
 	var property esUltimoNivel
 	var property tablaPersonaje = tableroPersonaje
-	var property tablaEnemigo = tableroEnemigo
 	var property tiempoAtaqueEnemigo = 0
 	var property elementosUnicos = [itemKitMedico]
-	var property elementoRegenerable = itemEnergia
-	var property mensaje 
+	var property elementoRegenerable = itemEnergia 
 	
 	method iniciarNivel(){
 		//Agrego fondo de pantalla del nivel
 		pantallaPrincipal.mostrar(self.fondo())
 		
 		//Agrego visuales de personajes
-		[self.personajePrincipal(),self.enemigo(),tablaPersonaje,tablaEnemigo].forEach({unObjeto=>pantallaPrincipal.mostrar(unObjeto)})
+		[self.personajePrincipal(),self.enemigo(),tablaPersonaje].forEach({unObjeto=>pantallaPrincipal.mostrar(unObjeto)})
 
 		//Posiciono armas de personajes
 		
@@ -77,8 +75,6 @@ class Nivel {
 		//Asigno texto a tableros
 		tablaPersonaje.personaje(self.personajePrincipal())
 		tablaPersonaje.text()
-		tablaEnemigo.enemigo(self.enemigo())
-		tablaEnemigo.text()
 		
 		//actualizo barra de vida enemigo
 		enemigo.barraVida().actualizar(enemigo)
@@ -150,35 +146,18 @@ class Nivel {
 	
 }
 
-object ayuda{
-	method position() = game.origin()
-}
 object tableroPersonaje {
 	var property position = game.center()//at(1, 15)//[1,15]
 	var property personaje = null
 	
 	method text(){
 		
-		return "Personaje vida : " + personaje.vida().toString() + " Personaje energia:" + personaje.energia()
+		return " Personaje energia:" + personaje.energia()
 	}
 	
-	method textColor() = "00FF00FF"
+	//method textColor() = "00FF00FF"
 }
-
-object tableroEnemigo{
-	var property position = game.at(20, 15)//[20,15]
-	var property enemigo = null
 	
-	
-	method text(){
-		
-		return "Enemigo vida : " + enemigo.vida().toString()
-	}
-	
-	method textColor() = "FF0000FF"
-}
-
-
 
 const primerNivel = new Nivel(
 	personajePrincipal = guerrero, 
@@ -186,8 +165,7 @@ const primerNivel = new Nivel(
 	fondo = fondoNivelUno,
 	siguienteNivel = segundoNivel, 
 	esUltimoNivel = false,
-	tiempoAtaqueEnemigo = 200,
-	mensaje = "Debes matar al hechicero 3 veces"
+	tiempoAtaqueEnemigo = 200
 )	
 const segundoNivel = new Nivel(
 	personajePrincipal = arquera, 
@@ -195,26 +173,21 @@ const segundoNivel = new Nivel(
 	fondo = fondoNivelDos,
 	esUltimoNivel = false, 
 	siguienteNivel = tercerNivel,
-	tiempoAtaqueEnemigo = 3000,
-	mensaje = "Debes matar al basilisco, cuidado con el veneno"
+	tiempoAtaqueEnemigo = 3000
 )
-
 const tercerNivel = new Nivel(
 	personajePrincipal = sacerdote, 
 	enemigo = esqueleto,
 	fondo = fondoNivelTres,
 	esUltimoNivel = false, 
 	siguienteNivel = cuartoNivel,
-	tiempoAtaqueEnemigo = 3000,
-	mensaje = "Usa tu aura para matar al esqueleto!!!"
+	tiempoAtaqueEnemigo = 3000
 )
-
 const cuartoNivel = new Nivel(
 	personajePrincipal = angel, 
 	enemigo = dragon,
 	fondo = fondoNivelCuatro,
 	esUltimoNivel = true, 
 	siguienteNivel = null,
-	tiempoAtaqueEnemigo = 3000,
-	mensaje = "Cuidado, mata al dragon para ganar"
+	tiempoAtaqueEnemigo = 3000
 )

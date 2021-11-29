@@ -67,9 +67,9 @@ class ArmaDisparadaHaciaDerecha inherits Arma{
 }
 
 
-const espada = new Arma(image="espada.png", poderLetalidad=5, energiaRequerida=10, position=game.at(5,7), miArea = new AreaImagen(ancho = 2, alto = 2))
+const espada = new Arma(image="espada.png", poderLetalidad=2, energiaRequerida=10, position=game.at(5,7), miArea = new AreaImagen(ancho = 2, alto = 2))
 const flecha = new ArmaDisparadaHaciaDerecha(image = "flecha.png", poderLetalidad=5, energiaRequerida=10, position=game.at(5,7), miArea = new AreaImagen(ancho = 2, alto = 1))
-const rayo = new ArmaDisparadaHaciaIzquierda(image="rayo.png", poderLetalidad=5, miArea = new AreaImagen(ancho = 2, alto = 3))
+const rayo = new ArmaDisparadaHaciaIzquierda(image="rayo.png", poderLetalidad=2, miArea = new AreaImagen(ancho = 2, alto = 3))
 const veneno = new ArmaConDisparoAleatorio(image="charcoVeneno.png", poderLetalidad=5, miArea = new AreaImagen(ancho = 3, alto = 2))
 const aura = new Arma(image="auraSacerdote.png",poderLetalidad=5,energiaRequerida=10, position=game.at(5,7), miArea=new AreaImagen(ancho=2,alto=6))
 const humoNegro = new ArmaConDisparoAleatorio(image="humoNegro.png", poderLetalidad=5, miArea = new AreaImagen(ancho = 2, alto = 3),position=game.at(30,8))
