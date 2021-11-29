@@ -6,11 +6,13 @@ class Elemento {
 	var property image
 	var property position
 	
+	
 }
 
 class Energia inherits Elemento{
 	
 	var property activo = true
+	
 	
 	method accion(personaje){
 		personaje.regenerarEnergia()
@@ -26,7 +28,7 @@ class Energia inherits Elemento{
 class KitMedico inherits Elemento{
 	
 	const vida = 5
-	
+
 	method accion(personaje){
 		personaje.aumentarVida(vida)
 	}
