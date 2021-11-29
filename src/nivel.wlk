@@ -135,6 +135,8 @@ class Nivel {
 		
 		//Mover enemigo
 		game.onTick(3000, "mover enemigo", {self.enemigo().moverse()})
+		//Mover regenerador de energia
+		game.onTick(6000, "mover regenerador de energia", {self.elementoRegenerable().moverse()})
 		
 		
 	}

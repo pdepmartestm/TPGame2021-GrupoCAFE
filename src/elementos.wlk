@@ -6,6 +6,7 @@ class Elemento {
 	var property image
 	var property position
 	
+	method moverse(){}
 }
 
 class Energia inherits Elemento{
@@ -18,6 +19,9 @@ class Energia inherits Elemento{
 	
 	method aparecer(){
 		pantallaPrincipal.mostrar(self)
+	}
+	override method moverse() {
+        self.position(pantallaPrincipal.posicionDentroDeLaPantalla())
 	}
 			
 }
