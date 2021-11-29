@@ -14,6 +14,7 @@ class Personaje{
 	var property miArea = null
 	var property barraVida = null
 	var property posicionBarraVida = game.at(-1,5)
+	const property audioAtaque = null
 	
 	method atacar(){
 		arma.movimiento()		

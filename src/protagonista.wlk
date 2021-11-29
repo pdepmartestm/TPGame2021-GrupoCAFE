@@ -17,6 +17,7 @@ class Protagonista inherits Personaje{
 		
 		if(self.poseeEnergiaRequerida(self.arma())) {
 			self.agregarArma()
+			sonido.reproducir(self.audioAtaque())
 			self.restarEnergia(self.arma().energiaRequerida()) //pierde energia		
 			self.arma().movimiento()
 			game.schedule(50, {self.arma().desaparece()})	
@@ -126,7 +127,8 @@ const guerrero = new Protagonista(image = "guerrero1.png",
 									miArea = new AreaImagen(ancho = 1, alto = 5), 
 									posicionArmaX = 2, 
 									posicionArmaY = 2,
-									barraVida = vidaPersonajePrincipal
+									barraVida = vidaPersonajePrincipal,
+									audioAtaque = "sonidoEspada"
 								)
 								
 const arquera = new Protagonista(image = "arquera.png", 
@@ -134,7 +136,8 @@ const arquera = new Protagonista(image = "arquera.png",
 									miArea = new AreaImagen(ancho = 2, alto = 3), 
 									posicionArmaX = 1, 
 									posicionArmaY = 4,
-									barraVida = vidaPersonajePrincipal
+									barraVida = vidaPersonajePrincipal,
+									audioAtaque = "sonidoFlecha"
 								)
 								
 const sacerdote = new Protagonista(image = "sacerdote.png", 
