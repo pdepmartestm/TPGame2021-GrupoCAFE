@@ -12,6 +12,7 @@ object pantallaPrincipal {
 	var property pantalla = "muro.jpg"
 	var property ancho = 34
 	var property alto = 18
+	const sonidoIntro = sonido.sonido("intro")
 	
 	method menuInicial() {
 	 	
@@ -97,7 +98,7 @@ object sonido {
     }
 
 }
-const sonidoIntro = sonido.sonido("intro")
+
 
 //PANTALLA PARA DERROTA Y VICTORIA
 class Pantalla{

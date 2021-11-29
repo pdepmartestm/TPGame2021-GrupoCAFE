@@ -18,11 +18,16 @@ class Nivel {
 	var property tablaPersonaje = tableroPersonaje
 	var property tiempoAtaqueEnemigo = 0
 	var property elementosUnicos = [itemKitMedico]
-	var property elementoRegenerable = itemEnergia 
+	var property elementoRegenerable = itemEnergia
+	const sonidoAmbiente = null
 	
 	method iniciarNivel(){
 		//Agrego fondo de pantalla del nivel
 		pantallaPrincipal.mostrar(self.fondo())
+		
+		//Reproducir sonido indefinidamente
+		game.schedule(1, {=> sonidoAmbiente.play()})
+		sonidoAmbiente.shouldLoop(true)
 		
 		//Agrego visuales de personajes
 		[self.personajePrincipal(),self.enemigo(),tablaPersonaje].forEach({unObjeto=>pantallaPrincipal.mostrar(unObjeto)})
@@ -137,12 +142,13 @@ class Nivel {
 		game.clear()
 		
 		if(self.esUltimoNivel()){
-			
+			sonidoAmbiente.stop()
 			pantallaPrincipal.victoria()
 			winnerMusic.play()
 			
 				
 		}else{
+			sonidoAmbiente.stop()
 			pantallaPrincipal.nivel(siguienteNivel)
 			pantallaPrincipal.iniciarJuego()
 		}
@@ -170,7 +176,8 @@ const primerNivel = new Nivel(
 	fondo = fondoNivelUno,
 	siguienteNivel = segundoNivel, 
 	esUltimoNivel = false,
-	tiempoAtaqueEnemigo = 200
+	tiempoAtaqueEnemigo = 200,
+	sonidoAmbiente = sonido.sonido("sonidoDesierto")
 )	
 const segundoNivel = new Nivel(
 	personajePrincipal = arquera, 
@@ -178,7 +185,8 @@ const segundoNivel = new Nivel(
 	fondo = fondoNivelDos,
 	esUltimoNivel = false, 
 	siguienteNivel = tercerNivel,
-	tiempoAtaqueEnemigo = 3000
+	tiempoAtaqueEnemigo = 3000,
+	sonidoAmbiente = sonido.sonido("sonidoBosque")
 )
 const tercerNivel = new Nivel(
 	personajePrincipal = sacerdote, 
@@ -186,7 +194,8 @@ const tercerNivel = new Nivel(
 	fondo = fondoNivelTres,
 	esUltimoNivel = false, 
 	siguienteNivel = cuartoNivel,
-	tiempoAtaqueEnemigo = 3000
+	tiempoAtaqueEnemigo = 3000,
+	sonidoAmbiente = sonido.sonido("sonidoCueva")
 )
 const cuartoNivel = new Nivel(
 	personajePrincipal = angel, 
@@ -194,5 +203,6 @@ const cuartoNivel = new Nivel(
 	fondo = fondoNivelCuatro,
 	esUltimoNivel = true, 
 	siguienteNivel = null,
-	tiempoAtaqueEnemigo = 3000
+	tiempoAtaqueEnemigo = 3000,
+	sonidoAmbiente = sonido.sonido("sonidoCuevaDeLava")
 )
