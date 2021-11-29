@@ -62,8 +62,10 @@ class Protagonista inherits Personaje{
 		if (vida<10){
 			if(vida+cantidad>10){
 				vida = 10
+				self.barraVida().actualizar(self)
 			}else{
 			vida = vida + cantidad
+			self.barraVida().actualizar(self)
 			game.say(self, "10+ life")
 			}
 		}
