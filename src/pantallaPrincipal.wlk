@@ -73,8 +73,8 @@ object pantallaPrincipal {
 	}
 	
 	method posicionDentroDeLaPantalla(){
-		const x = (1..self.alto()-6).anyOne()
-        const y = (1..self.ancho()-2).anyOne()
+		const x = (1..game.width()-6).anyOne()
+        const y = (1..game.height()-2).anyOne()
 
         return game.at(x, y)
 	}
@@ -102,7 +102,7 @@ const sonidoIntro = sonido.sonido("intro")
 //PANTALLA PARA DERROTA Y VICTORIA
 class Pantalla{
 	var property image
-	var property position=game.at(8,4) //ponerlo en el centro
+	var property position=game.origin() //ponerlo en el centro
 }
 
 const pantallaVictoria = new Pantalla(image="you-win.png")
