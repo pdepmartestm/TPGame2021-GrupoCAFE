@@ -19,7 +19,7 @@ class Energia inherits Elemento{
 	
 	
 	method accion(personaje){
-		if(miArea.colisionan(personaje, self)) personaje.regenerarEnergia()
+		personaje.regenerarEnergia()
 	}
 	
 	method aparecer(){

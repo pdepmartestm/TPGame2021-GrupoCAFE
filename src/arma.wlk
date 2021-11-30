@@ -57,6 +57,8 @@ class ArmaConDisparoAleatorio inherits Arma{
 	override method movimiento(){
 		position = pantallaPrincipal.posicionDentroDeLaPantalla()
 	}
+	
+	method interactuarElemento(param1){}
 }
 
 class ArmaDisparadaHaciaDerecha inherits Arma{

@@ -72,13 +72,12 @@ class Nivel {
 		}
 		
 		
-		game.onTick(10000,"colisiona elemento regenerable con protagonista",{
+		game.onTick(4000,"colisiona elemento regenerable con protagonista", {
+			if(elementoRegenerable.miArea().colisionan(personajePrincipal, elementoRegenerable)) {
 				personajePrincipal.interactuarElemento(elementoRegenerable)
-				if(elementoRegenerable.activo()){
-					game.removeVisual(elementoRegenerable)
-					elementoRegenerable.activo(false)
+				game.removeVisual(elementoRegenerable)
+				elementoRegenerable.activo(false)
 				}
-				
 			})
 			
 		
