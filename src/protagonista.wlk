@@ -113,7 +113,7 @@ class Protagonista inherits Personaje{
 
 const guerrero = new Protagonista(image = "guerrero1.png", 
 									arma = espada, 
-									miArea = new AreaImagen(ancho = 1, alto = 5), 
+									miArea = new AreaImagen(ancho = 2, alto = 5), 
 									posicionArmaX = 2, 
 									posicionArmaY = 2,
 									barraVida = vidaPersonajePrincipal,

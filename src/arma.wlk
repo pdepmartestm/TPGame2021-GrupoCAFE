@@ -27,7 +27,7 @@ class Arma{
 	
 	method colisionoConPersonaje(unPersonaje){
 		
-		const coinciden = true
+		/*const coinciden = true
 		const anchoPersonaje = unPersonaje.miArea().ancho()
 		const altoPersonaje = unPersonaje.miArea().alto()
 		const anchoArma = self.miArea().ancho()
@@ -37,9 +37,9 @@ class Arma{
 		if(self.position().x() > (unPersonaje.position().x() + anchoPersonaje)) return !coinciden 
 		if(unPersonaje.position().y() > (self.position().y() + altoArma)) return !coinciden 
 		if(self.position().y() > (unPersonaje.position().y() + altoPersonaje)) return !coinciden 
-		
-		
 		return coinciden
+		*/
+		return miArea.colisionan(unPersonaje, self)
 	}
 	
 

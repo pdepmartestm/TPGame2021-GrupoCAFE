@@ -1,12 +1,16 @@
 import wollok.game.*
 import pantallaPrincipal.*
+import areaImagen.*
 
 class Elemento {
 	
 	var property image
 	var property position
+	const property miArea = null
 	
-	
+
+	method moverse(){}
+
 }
 
 class Energia inherits Elemento{
@@ -15,11 +19,14 @@ class Energia inherits Elemento{
 	
 	
 	method accion(personaje){
-		personaje.regenerarEnergia()
+		if(miArea.colisionan(personaje, self)) personaje.regenerarEnergia()
 	}
 	
 	method aparecer(){
 		pantallaPrincipal.mostrar(self)
+	}
+	override method moverse() {
+        self.position(pantallaPrincipal.posicionDentroDeLaPantalla())
 	}
 			
 }
@@ -35,5 +42,5 @@ class KitMedico inherits Elemento{
 	
 }
 
-const itemEnergia = new Energia(image="energyPoison.png", position=game.at(10,12))
-const itemKitMedico = new KitMedico(image="lifePoison.png", position=game.at(16,10))
+const itemEnergia = new Energia(image="energyPoison.png", position=game.at(10,12), miArea = new AreaImagen(ancho = 1, alto = 1))
+const itemKitMedico = new KitMedico(image="lifePoison.png", position=game.at(16,10), miArea = new AreaImagen(ancho = 1, alto = 1))

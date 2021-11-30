@@ -69,14 +69,25 @@ class Nivel {
 			game.removeVisual(elem)
 
 			})
-		}	
+		}
 		
-		game.onCollideDo(elementoRegenerable, {
+		
+		game.onTick(10000,"colisiona elemento regenerable con protagonista",{
+				personajePrincipal.interactuarElemento(elementoRegenerable)
+				if(elementoRegenerable.activo()){
+					game.removeVisual(elementoRegenerable)
+					elementoRegenerable.activo(false)
+				}
+				
+			})
+			
+		
+		/*game.onCollideDo(elementoRegenerable, {
 			personaje=>
 			personaje.interactuarElemento(elementoRegenerable)
 			game.removeVisual(elementoRegenerable)
 			elementoRegenerable.activo(false)
-		})
+		})*/
 		
 			
 		//Asigno texto a tableros
@@ -135,6 +146,9 @@ class Nivel {
 		
 		//Mover enemigo
 		game.onTick(3000, "mover enemigo", {self.enemigo().moverse()})
+		
+		//Mover regenerador de energia
+		game.onTick(6000, "mover regenerador de energia", {self.elementoRegenerable().moverse()})
 		
 		
 	}
