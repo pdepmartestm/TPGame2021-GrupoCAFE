@@ -18,12 +18,6 @@ class Enemigo inherits Personaje {
 		self.posicionarArma()
 		super()
 	}
-	/* 
-	override method posicionarVida() {
-		self.barraVida().position(self.position().x() - 1, self.position().y() + 4)
-	}*/
-	
-	
 	
 }
 
@@ -38,8 +32,9 @@ class EnemigoConMovimientoAleatorio inherits Enemigo {
 
 class EnanoHechicero inherits Enemigo{
 	var vecesQueMori = 0
-	const cosas = [self, self.arma()]	
-	override method cumploCondicion() = super() && vecesQueMori == 3
+	const cosas = [self, self.arma(), self.barraVida()]
+	
+	override method meQuedeSinVida() = super() && vecesQueMori == 3
 	
 	override method recibeAtaque(personaje){
 		
@@ -54,9 +49,10 @@ class EnanoHechicero inherits Enemigo{
 					
 						game.schedule(1000, {
 						self.vida(10)
-						pantallaPrincipal.mostrar(self)
-						self.agregarArma()
+						[self, self.barraVida()].forEach({algo => pantallaPrincipal.mostrar(algo)})
 						self.barraVida().actualizar(self)
+						self.agregarArma()
+						
 					})	
 		}
 	

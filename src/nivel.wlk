@@ -80,15 +80,7 @@ class Nivel {
 				}
 			})
 			
-		
-		/*game.onCollideDo(elementoRegenerable, {
-			personaje=>
-			personaje.interactuarElemento(elementoRegenerable)
-			game.removeVisual(elementoRegenerable)
-			elementoRegenerable.activo(false)
-		})*/
-		
-			
+
 		//Asigno texto a tableros
 		tablaPersonaje.personaje(self.personajePrincipal())
 		tablaPersonaje.text()
@@ -104,7 +96,8 @@ class Nivel {
 		keyboard.right().onPressDo({self.personajePrincipal().moverseHaciaLaDerecha()})
 		keyboard.up().onPressDo({self.personajePrincipal().moverseHaciaArriba()})
 		keyboard.down().onPressDo({self.personajePrincipal().moverseHaciaAbajo()})		
-			
+		
+		//ataque protagonista	
 		keyboard.x().onPressDo{	
 			
 			if(personajePrincipal.poseeEnergiaRequerida(personajePrincipal.arma())) {			
@@ -114,7 +107,7 @@ class Nivel {
 			else
 				pantallaPrincipal.emitirMensaje("You do not have enough energy" + personajePrincipal.energia().toString(), personajePrincipal)
 				
-			if(self.enemigo().cumploCondicion()){
+			if(self.enemigo().meQuedeSinVida()){
 				self.terminarNivel()
 			}
 			
