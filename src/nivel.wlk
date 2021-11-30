@@ -178,7 +178,6 @@ object tableroPersonaje {
 		return " Personaje energia:" + personaje.energia()
 	}
 	
-	//method textColor() = "00FF00FF"
 }
 	
 

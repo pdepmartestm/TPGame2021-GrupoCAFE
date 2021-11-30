@@ -79,9 +79,7 @@ object pantallaPrincipal {
 
         return game.at(x, y)
 	}
-	
-	
-	
+
 }
 
 //SONIDO
@@ -94,7 +92,6 @@ object sonido {
     method parar(audio) = self.sonido(audio).stop()
 
 }
-
 
 //PANTALLA PARA DERROTA Y VICTORIA
 class Pantalla{
